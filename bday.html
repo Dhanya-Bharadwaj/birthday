@@ -1,0 +1,2907 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Super Surprise for Kyootu!</title>
+
+    <style>
+      /* --- GLOBAL STYLES --- */
+      :root {
+        --primary-pink: #ff69b4; /* Hot Pink */
+        --light-pink: #ffb6c1; /* Light Pink */
+        --soft-yellow: #fffacd; /* Lemon Chiffon */
+        --mint-green: #98fb98; /* Mint Green */
+        --rose-gold: #b76e79; /* Rose Gold approximation */
+        --lavender: #e6e6fa; /* Lavender */
+        --deep-purple: #8a2be2;
+        --sky-blue: #87ceeb;
+        --gold-star: #ffd700;
+        --star-glow: #ffeeaa;
+
+        --confetti-color1: #ffefd5; /* Papaya Whip */
+        --confetti-color2: #ffe4e1; /* Misty Rose */
+        --confetti-color3: #e0ffff; /* Light Cyan */
+        --confetti-color4: #f0f8ff; /* Alice Blue */
+        --confetti-color5: #d8bfd8; /* Thistle */
+
+        --cake-base: #f7e7ce; /* Cream */
+        --cake-frosting: #ffdead; /* Navajo White */
+        --cake-drip: #ffc0cb; /* Pink Drip */
+        --sprinkle-red: #ff4500;
+        --sprinkle-blue: #00bfff;
+        --sprinkle-green: #32cd32;
+        --sprinkle-purple: #9370db;
+        --sprinkle-yellow: #ffd700; /* New sprinkle color */
+
+        --candle-flame: #ffa500; /* Orange */
+        --candle-body: #ffe4b5; /* Moccasin */
+        --candle-stripe1: var(--primary-pink);
+        --candle-stripe2: var(--soft-yellow);
+
+        --kyootu-skin: #f8d7c4; /* Light skin tone */
+        --kyootu-hair: #ff7f50; /* Coral */
+        --kyootu-dress: #ffb6c1; /* Light Pink */
+        --kyootu-blush: #ffc0cb;
+        --kyootu-shoe: #d8bfd8;
+
+        --text-color: #4a4a4a;
+        --shadow-color: rgba(0, 0, 0, 0.15);
+        --dark-shadow-color: rgba(0, 0, 0, 0.3);
+
+        --light-shine: rgba(255, 255, 255, 0.8);
+        --glow-fx: rgba(255, 255, 255, 0.4);
+
+        /* New variables for more magic! */
+        --magic-trail-color: #f0e68c; /* Khaki for a subtle glow */
+        --wish-sparkle: #fff8dc; /* Cornsilk */
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+        background-color: #fce4ec;
+        color: var(--text-color);
+        scroll-behavior: smooth;
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+      }
+
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Dancing+Script:wght@700&display=swap');
+
+      /* Magic Curtain Overlay */
+      #magic-curtain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          var(--lavender),
+          var(--light-pink),
+          var(--soft-yellow)
+        );
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        opacity: 1;
+        transition: opacity 2s ease-out, transform 2s cubic-bezier(0.25, 1, 0.5, 1);
+        transform-origin: center;
+      }
+
+      #magic-curtain.opening {
+        transform: scale(1.5) rotate(15deg); /* Slight rotation for a dramatic opening */
+        opacity: 0;
+      }
+
+      .sparkle-dot {
+        position: absolute;
+        background: radial-gradient(
+          circle,
+          var(--light-shine) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        border-radius: 50%;
+        opacity: 0;
+        animation: curtain-sparkle 2s infinite ease-in-out alternate;
+      }
+
+      .container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* --- SECTION STYLES --- */
+      .section {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        box-sizing: border-box;
+        transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1),
+          opacity 1.2s ease-out; /* Smoother cubic-bezier for transitions */
+        will-change: transform, opacity;
+      }
+
+      #section1 {
+        background: radial-gradient(
+            circle at top left,
+            var(--lavender) 0%,
+            var(--light-pink) 50%,
+            var(--soft-yellow) 100%
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"><stop offset="0%" style="stop-color:rgb(255,255,255,0.1)" /><stop offset="100%" style="stop-color:rgb(255,255,255,0)" /></radialGradient></defs><rect width="100%" height="100%" fill="url(%23grad1)" /></svg>')
+            fixed;
+        background-size: cover;
+        transform: translateY(0);
+        z-index: 6;
+      }
+
+      #section2 {
+        background: linear-gradient(
+            to bottom,
+            #e0f2f7 0%,
+            #fce4ec 50%,
+            #f7d2e4 100%
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="rgba(0,0,0,0.05)" /></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)" /></svg>');
+        transform: translateY(100%);
+        opacity: 0;
+        z-index: 5;
+      }
+
+      #section3 {
+        background: radial-gradient(
+            circle at center,
+            #d9e6f2 0%,
+            #a7c7e7 50%,
+            #87ceeb 100%
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"><stop offset="0%" style="stop-color:rgb(255,255,255,0.15)" /><stop offset="100%" style="stop-color:rgb(255,255,255,0)" /></radialGradient></defs><rect width="100%" height="100%" fill="url(%23grad2)" /></svg>')
+            fixed;
+        background-size: cover;
+        transform: translateY(200%);
+        opacity: 0;
+        z-index: 4;
+      }
+
+      #section4 {
+        background: radial-gradient(
+            circle at center,
+            #fffafa 0%,
+            #f7e7ce 50%,
+            #fce4ec 100%
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><pattern id="tiny-stars" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.4)" /><circle cx="20" cy="20" r="0.8" fill="rgba(255,255,255,0.3)" /><circle cx="35" cy="15" r="1.2" fill="rgba(255,255,255,0.5)" /></pattern></defs><rect width="100%" height="100%" fill="url(%23tiny-stars)" /></svg>');
+        background-size: cover;
+        transform: translateY(300%);
+        opacity: 0;
+        z-index: 3;
+        position: relative;
+        overflow: hidden; /* Ensure cake elements are clipped correctly */
+      }
+
+      #section5 {
+        background: linear-gradient(
+            180deg,
+            #fce4ec 0%,
+            #ffe4e1 50%,
+            #ffefd5 100%
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><pattern id="stars" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.6)" /><circle cx="50" cy="50" r="1.5" fill="rgba(255,255,255,0.7)" /><circle cx="90" cy="90" r="0.8" fill="rgba(255,255,255,0.5)" /></pattern></defs><rect width="100%" height="100%" fill="url(%23stars)" /></svg>');
+        background-size: cover;
+        transform: translateY(400%);
+        opacity: 0;
+        z-index: 2;
+        flex-direction: column;
+        perspective: 1200px; /* Stronger perspective for 3D effect */
+      }
+
+      #section6 {
+        background: linear-gradient(
+            to top right,
+            var(--primary-pink),
+            var(--deep-purple),
+            var(--sky-blue)
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><radialGradient id="grad3" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"><stop offset="0%" style="stop-color:rgb(255,255,255,0.2)" /><stop offset="100%" style="stop-color:rgb(255,255,255,0)" /></radialGradient></defs><rect width="100%" height="100%" fill="url(%23grad3)" /></svg>')
+            fixed;
+        background-size: cover;
+        transform: translateY(500%);
+        opacity: 0;
+        z-index: 1;
+        flex-direction: column;
+      }
+
+      /* --- KYOOTU CHARACTER STYLES (Centralized for all sections) --- */
+      .cute-kyootu {
+        position: absolute;
+        width: 180px;
+        height: 250px;
+        z-index: 8; /* Lower default z-index */
+        opacity: 0;
+        transform-origin: bottom center;
+        transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1),
+          opacity 1.5s ease-out; /* Smoother transform */
+        animation: kyootu-idle 4s ease-in-out infinite alternate;
+      }
+
+      /* Base positions per section (JS will set initial, then animations take over) */
+      #section1 .cute-kyootu {
+        bottom: 5%;
+        right: 10%;
+        transform: translateX(200px) scale(0.8);
+      }
+      #section2 .cute-kyootu {
+        bottom: 5%;
+        left: 5%;
+        transform: translateX(-200px) scale(0.8);
+      }
+      #section3 .cute-kyootu {
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%) scale(0.8);
+      }
+      #section4 .cute-kyootu {
+        bottom: 18%;
+        right: 20%;
+        transform: translateX(200px) scale(0.8);
+      }
+      #section5 .cute-kyootu {
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%) scale(0.8);
+      }
+      #section6 .cute-kyootu {
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%) scale(0.8);
+      }
+
+      .kyootu-svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      #kyootu-body {
+        fill: var(--kyootu-dress);
+        transition: fill 0.3s ease-out; /* Added for potential color changes */
+      }
+      #kyootu-head {
+        fill: var(--kyootu-skin);
+      }
+      #kyootu-hair path {
+        fill: var(--kyootu-hair);
+      }
+      .kyootu-eye {
+        fill: #333;
+        transition: transform 0.1s ease-out; /* For blinking */
+      }
+      #kyootu-mouth {
+        stroke: #f06292;
+        stroke-width: 3;
+        fill: none;
+        stroke-linecap: round;
+        transform-origin: center;
+        transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1),
+          d 0.3s ease-out; /* Added 'd' for SVG path change */
+      }
+      .kyootu-blush {
+        fill: var(--kyootu-blush);
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+      }
+      .kyootu-arm {
+        fill: var(--kyootu-dress);
+        transform-origin: 50% 10%;
+        transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .kyootu-shoe {
+        fill: var(--kyootu-shoe);
+        transform-origin: center;
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .kyootu-shoe.step-left {
+        transform: translateX(-5px) rotate(-5deg);
+      }
+      .kyootu-shoe.step-right {
+        transform: translateX(5px) rotate(5deg);
+      }
+
+      /* Kyootu emotional states / poses */
+      #kyootu-mouth.surprise-mouth {
+        d: path('M95,120 Q100,105 105,120'); /* Small O shape */
+        transform: scale(0.8);
+      }
+      #kyootu-mouth.thoughtful-mouth {
+        d: path('M90,120 L110,120'); /* Flat line */
+        transform: translateY(2px);
+      }
+      #kyootu-mouth.happy-mouth {
+        d: path('M85,115 Q100,130 115,115'); /* Happy smile */
+      }
+      #kyootu-mouth.neutral-mouth {
+        d: path('M90,115 Q100,125 110,115'); /* Default neutral */
+      }
+
+      /* Kyootu blowing pose */
+      #kyootu-arm-left.blow-pose {
+        transform: rotate(-80deg) translate(-10px, -20px);
+      }
+      #kyootu-arm-right.blow-pose {
+        transform: rotate(80deg) translate(10px, -20px);
+      }
+      #kyootu-mouth.blow-mouth {
+        transform: scaleY(0.5) translateY(5px);
+        d: path('M90,115 Q100,105 110,115'); /* Pursed lips for blowing */
+      }
+      .kyootu-blush.active {
+        opacity: 1;
+        animation: blush-pulse 1s forwards;
+      }
+      .kyootu-face-active .kyootu-blush {
+        opacity: 1; /* Keep blush active when Kyootu is engaged */
+      }
+
+      /* Kyootu throwing pose (adapted from blow-pose) */
+      #kyootu-arm-right.throw-pose {
+        transform: rotate(-30deg) translate(20px, -10px);
+      }
+      #kyootu-arm-left.throw-pose {
+        transform: rotate(10deg) translate(-5px, 0px);
+      }
+
+
+      /* --- SECTION 1: THE GRAND OVERTURE --- */
+      .party-banner {
+        position: absolute;
+        top: 15%;
+        font-family: 'Dancing Script', cursive;
+        font-size: 6em;
+        color: var(--primary-pink);
+        text-shadow: 5px 5px 10px var(--dark-shadow-color);
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8);
+        animation: banner-pop-in 1.5s forwards 1.5s ease-out;
+        z-index: 20;
+        perspective: 1000px; /* For 3D text effect */
+      }
+
+      .welcome-message {
+        position: absolute;
+        top: 30%;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2em;
+        color: var(--text-color);
+        opacity: 0;
+        transform: translateY(-30px);
+        animation: welcome-fade-in 1.5s forwards 2.8s ease-out;
+        z-index: 20;
+        text-align: center;
+        max-width: 80%;
+      }
+
+      /* SVG Balloons with Strings */
+      .balloon-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .hanging-balloon-group {
+        position: absolute;
+        opacity: 0;
+        transform-origin: center top;
+        animation: hanging-balloon-swing 20s ease-in-out infinite alternate;
+        z-index: 10;
+        transform: translateY(-100vh); /* Start off-screen */
+        transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1),
+          opacity 0.8s ease-out; /* Smooth arrival */
+      }
+
+      .hanging-balloon-group.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .hanging-balloon-group .balloon-svg {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) scale(0.8);
+        opacity: 1; /* Inherit from group */
+        transform-origin: center bottom;
+        animation: balloon-float 10s ease-in-out infinite alternate; /* More subtle individual float */
+        filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+      }
+
+      .hanging-balloon-group .balloon-svg path {
+        transition: fill 0.5s ease-out; /* Smooth color change if any */
+      }
+
+      .hanging-balloon-group .balloon-string {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.2);
+        width: 1px;
+        height: 100%;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        transform-origin: top;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+      }
+
+      /* Individual balloon placement */
+      .hanging-balloon-group:nth-child(1) {
+        left: 10%;
+        top: -10%;
+        height: 60%;
+        animation-delay: 0.5s;
+        animation-duration: 22s;
+      }
+      .hanging-balloon-group:nth-child(1) .balloon-svg path {
+        fill: var(--primary-pink);
+      }
+
+      .hanging-balloon-group:nth-child(2) {
+        left: 30%;
+        top: -20%;
+        height: 70%;
+        animation-delay: 1.2s;
+        animation-duration: 18s;
+      }
+      .hanging-balloon-group:nth-child(2) .balloon-svg path {
+        fill: var(--lavender);
+      }
+
+      .hanging-balloon-group:nth-child(3) {
+        left: 50%;
+        top: -5%;
+        height: 55%;
+        animation-delay: 0.8s;
+        animation-duration: 25s;
+      }
+      .hanging-balloon-group:nth-child(3) .balloon-svg path {
+        fill: var(--mint-green);
+      }
+
+      .hanging-balloon-group:nth-child(4) {
+        left: 70%;
+        top: -15%;
+        height: 65%;
+        animation-delay: 1.8s;
+        animation-duration: 20s;
+      }
+      .hanging-balloon-group:nth-child(4) .balloon-svg path {
+        fill: var(--soft-yellow);
+      }
+
+      /* Confetti Cannon Burst */
+      .confetti-burst {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 20;
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+      }
+      .confetti-burst.active {
+        opacity: 1;
+      }
+      .confetti-burst .confetti-piece {
+        animation: confetti-fall 1.5s forwards, confetti-spin 1s infinite linear;
+        opacity: 0;
+      }
+
+      /* Continuous Confetti */
+      .confetti-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        opacity: 0;
+        animation: confetti-fade-in 1s forwards 3s ease-out; /* Continuous stream starts later */
+        z-index: 10;
+      }
+
+      .confetti-piece {
+        position: absolute;
+        opacity: 0;
+        animation: confetti-fall var(--duration) linear infinite,
+          confetti-flicker 2s infinite alternate;
+        z-index: 1;
+        transform-origin: center center;
+      }
+
+      /* --- SECTION 2: THE GIFT GARDEN --- */
+      #section2 {
+        perspective: 1000px;
+        flex-direction: column;
+      }
+
+      .path-wrapper {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50%;
+        transform-style: preserve-3d;
+        transform: rotateX(70deg) translateY(100%);
+        transform-origin: bottom center;
+        opacity: 0;
+        transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1),
+          opacity 1s ease-out; /* Smoother path reveal */
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.2) 20%,
+          rgba(255, 255, 255, 0.3) 100%
+        );
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .sparkle-trail {
+        position: absolute;
+        background: radial-gradient(
+          circle,
+          var(--magic-trail-color) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        border-radius: 50%;
+        width: 15px; /* Slightly smaller for more trail effect */
+        height: 15px;
+        opacity: 0;
+        animation: sparkle-glow 3s infinite ease-in-out alternate;
+      }
+
+      .gift-box {
+        position: absolute;
+        bottom: 10%;
+        width: 120px;
+        height: 100px;
+        background-color: var(--rose-gold);
+        border-radius: 8px;
+        box-shadow: 0 8px 20px var(--dark-shadow-color);
+        opacity: 0;
+        transform: translateY(100px) scale(0.5) rotateY(0deg);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        z-index: 10; /* Ensure gifts are above Kyootu by default */
+        transform-origin: center bottom;
+        cursor: pointer; /* Indicate interactivity */
+        overflow: hidden; /* For explosion particles */
+      }
+      .gift-box.bouncing {
+        animation: gift-bounce 2s infinite ease-in-out;
+      }
+      .gift-box.collected {
+        transform: translateY(-200px) scale(0) !important;
+        opacity: 0 !important;
+        transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+      }
+
+      /* Gift Explosion Particle */
+      .gift-explosion-particle {
+        position: absolute;
+        background-color: var(--primary-pink); /* Default color, can vary */
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+        opacity: 0;
+        animation: gift-explode-particle 0.8s ease-out forwards;
+      }
+
+      /* Individual gift positions */
+      #gift1 {
+        left: 10%;
+        bottom: 15%;
+      }
+      #gift2 {
+        right: 15%;
+        bottom: 10%;
+      }
+      #gift3 {
+        left: 30%;
+        bottom: 5%;
+      }
+      #gift4 {
+        right: 5%;
+        bottom: 20%;
+        width: 100px;
+        height: 80px;
+        background-color: var(--light-pink);
+      }
+      #gift5 {
+        left: 50%;
+        bottom: 12%;
+        transform: translateX(-50%);
+        background-color: var(--deep-purple);
+      }
+
+      /* Gift bows (from previous code) */
+      .gift-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 25px;
+        height: 100%;
+        background-color: var(--primary-pink);
+        border-radius: 3px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+      .gift-box::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 25px;
+        background-color: var(--primary-pink);
+        border-radius: 3px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+      .gift-box-bow {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%) scale(0.5);
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-pink);
+        border-radius: 50%;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      }
+      .gift-box-bow::before,
+      .gift-box-bow::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background-color: var(--primary-pink);
+        border-radius: 50% 50% 0 50%;
+        top: 0;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+      .gift-box-bow::before {
+        left: -5px;
+        transform: rotate(-45deg);
+      }
+      .gift-box-bow::after {
+        right: -5px;
+        transform: rotate(45deg);
+      }
+
+      /* Animated hint message */
+      #gift-hint-message {
+        position: absolute;
+        bottom: 50%;
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+        font-family: 'Dancing Script', cursive;
+        font-size: 2.5em; /* Larger and more prominent */
+        font-weight: bold;
+        color: var(--primary-pink); /* Make it pop */
+        text-shadow: 2px 2px 5px var(--dark-shadow-color);
+        animation: hint-pulse 2s infinite alternate ease-in-out; /* Add pulse animation */
+        z-index: 20; /* Ensure it's above other elements */
+      }
+
+      /* --- NEW SECTION 3: THE WISHING FOUNTAIN --- */
+      .wishing-well {
+        position: absolute;
+        bottom: 0;
+        width: 400px;
+        height: 300px;
+        background: radial-gradient(
+          circle at bottom,
+          #a9d0f5,
+          #6ca6cd,
+          #36658d
+        );
+        border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+        box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.3),
+          0 0 50px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(100px) scale(0.8);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+        z-index: 5;
+      }
+      .wishing-well::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: linear-gradient(
+          to top,
+          rgba(255, 255, 255, 0.8) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        border-radius: 50%;
+        opacity: 0.5;
+        animation: water-surface 3s infinite alternate ease-in-out;
+      }
+
+      .wishing-star-btn {
+        position: absolute;
+        bottom: 310px; /* Above wishing well */
+        z-index: 10; /* Ensure button is clickable above Kyootu */
+        padding: 15px 30px;
+        background-color: var(--gold-star);
+        color: var(--text-color);
+        border: none;
+        border-radius: 30px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        font-size: 1.2em;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+        transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        animation: button-pulse 2s infinite alternate ease-in-out; /* Added pulse */
+      }
+      .wishing-star-btn:hover {
+        transform: translateY(20px) scale(0.9) !important; /* Scale up slightly on hover */
+      }
+      .wishing-star-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        animation: none;
+      }
+
+      .wishing-star {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        fill: var(--gold-star);
+        filter: drop-shadow(0 0 5px var(--gold-star))
+          drop-shadow(0 0 10px var(--star-glow));
+        opacity: 0;
+        animation: wishing-star-rise 5s forwards ease-out;
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Smooth throw */
+      }
+
+      /* --- SECTION 4: THE CAKE REVEAL (ENHANCED) --- */
+      #section4 {
+        position: relative;
+        /* Additional party background elements */
+        background: radial-gradient(
+            circle at center,
+            #fffafa 0%,
+            #f7e7ce 50%,
+            #fce4ec 100%
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><pattern id="tiny-stars" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.4)" /><circle cx="20" cy="20" r="0.8" fill="rgba(255,255,255,0.3)" /><circle cx="35" cy="15" r="1.2" fill="rgba(255,255,255,0.5)" /></pattern></defs><rect width="100%" height="100%" fill="url(%23tiny-stars)" /></svg>');
+        background-size: cover;
+      }
+
+      .cake-stand-reveal {
+        position: absolute;
+        bottom: 18%;
+        width: 280px;
+        height: 40px;
+        background-color: #f0f0f0;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 10px 25px var(--dark-shadow-color);
+        z-index: 5;
+        opacity: 0;
+        transform: translateY(150px) scale(0.7);
+        transition: none; /* Controlled by JS animation */
+      }
+
+      .cake-wrapper {
+        position: absolute;
+        bottom: calc(18% + 40px); /* Above stand */
+        opacity: 0;
+        transform: translateY(150px) scale(0.7);
+        transition: none; /* Controlled by JS animation */
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+      }
+
+      .cake-layer {
+        width: 300px;
+        height: 90px;
+        background-color: var(--cake-base);
+        border-radius: 50% / 20%;
+        box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.1),
+          0 0 20px rgba(255, 255, 255, 0.6) inset;
+        position: relative;
+        overflow: hidden; /* For sprinkles */
+        opacity: 0; /* Initially hidden */
+        transform: scale(0.8) translateY(50px);
+        transition: none; /* Controlled by JS animation */
+      }
+      .cake-layer.active {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+
+      .cake-layer::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        background-color: var(--cake-frosting);
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .cake-layer:nth-child(2) {
+        width: 250px;
+        height: 80px;
+        margin-top: -25px;
+        z-index: 1;
+      }
+      .cake-layer:nth-child(3) {
+        width: 200px;
+        height: 70px;
+        margin-top: -25px;
+        z-index: 2;
+      }
+
+      /* Cake drips */
+      .cake-drip {
+        position: absolute;
+        width: 25px;
+        height: 35px;
+        background: var(--cake-drip);
+        border-radius: 0 0 50% 50%;
+        bottom: 0;
+        z-index: 3;
+        animation: drip 1s ease-out forwards;
+        opacity: 0;
+        transition: none; /* Controlled by JS animation */
+      }
+      .cake-drip:nth-child(even) {
+        width: 30px;
+        height: 40px;
+      }
+
+      /* Sprinkles */
+      .sprinkle {
+        position: absolute;
+        background: var(--sprinkle-red);
+        width: 4px;
+        height: 10px;
+        border-radius: 2px;
+        opacity: 0;
+        animation: sprinkle-fall 0.8s forwards; /* New sprinkle animation */
+        transition: none; /* Controlled by JS animation */
+        z-index: 5; /* Ensure sprinkles are above cake but below candles */
+      }
+
+      .candles {
+        position: absolute;
+        top: -30px;
+        display: flex;
+        gap: 15px;
+        z-index: 10;
+        transform: translateX(-50%);
+        left: 50%;
+        opacity: 0;
+        transform: translateY(-50px) translateX(-50%) scale(0.5);
+        transition: none; /* Controlled by JS animation */
+      }
+
+      .candle {
+        width: 12px;
+        height: 50px;
+        background: linear-gradient(
+          to right,
+          var(--candle-body) 0%,
+          var(--candle-body) 30%,
+          var(--candle-stripe1) 30%,
+          var(--candle-stripe1) 60%,
+          var(--candle-stripe2) 60%,
+          var(--candle-stripe2) 100%
+        );
+        border-radius: 4px;
+        position: relative;
+        box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .flame {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 15px;
+        background-color: var(--candle-flame);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        box-shadow: 0 0 12px var(--candle-flame),
+          0 0 25px rgba(255, 165, 0, 0.5);
+        opacity: 0; /* Initially off */
+        transition: opacity 0.3s ease-out;
+        animation: flame-flicker 0.5s infinite alternate;
+      }
+
+      .flame.active {
+        opacity: 1;
+      }
+      .flame.off {
+        opacity: 0;
+      }
+
+      /* Puff effect for blowing candles */
+      #puff-effect {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.9) 0%,
+          rgba(255, 255, 255, 0.5) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        border-radius: 50%;
+        opacity: 0;
+        z-index: 20;
+        transform: translate(-50%, -50%) scale(0);
+        filter: blur(8px);
+        transition: none; /* Controlled by animation */
+      }
+
+      .cake-message {
+        position: absolute;
+        top: 20%; /* Above the cake */
+        font-family: 'Dancing Script', cursive;
+        font-size: 5em;
+        color: var(--primary-pink);
+        text-shadow: 3px 3px 8px var(--dark-shadow-color);
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8) rotateX(45deg);
+        z-index: 12;
+        transition: none; /* Controlled by JS animation */
+        text-align: center;
+      }
+
+      /* Confetti for cake section */
+      #section4-confetti-burst {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1; /* Below cake, above background */
+        opacity: 0;
+      }
+      #section4-confetti-burst.active {
+        opacity: 1;
+        transition: opacity 0.5s ease-out;
+      }
+
+      /* --- NEW SECTION 5: THE MEMORY CAROUSEL (ENHANCED) --- */
+      .memory-carousel {
+        position: relative;
+        width: 80%;
+        max-width: 600px;
+        height: 60%;
+        max-height: 400px;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        background-color: #fefefe;
+        opacity: 0;
+        transform: translateY(50px) scale(0.8); /* Initial setup for js to animate */
+        transition: opacity 1s ease-out,
+          transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 10;
+        transform-style: preserve-3d;
+      }
+
+      .memory-slide-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+      }
+
+      .memory-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        /* transition: opacity 1s ease-in-out, transform 1s ease-in-out; */ /* Controlled by JS/keyframes now */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Dancing Script', cursive;
+        font-size: 2.5em;
+        color: var(--primary-pink);
+        text-shadow: 2px 2px 5px var(--dark-shadow-color);
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        backface-visibility: hidden; /* Prevent flickering */
+        will-change: transform, opacity;
+      }
+
+      .memory-slide-content {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; /* Spacing between text and image */
+      }
+      .memory-slide.active .memory-slide-content {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .memory-slide img {
+        width: 120px; /* Slightly larger images */
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        border: 4px solid var(--light-pink); /* Add a border for charm */
+      }
+
+      /* Carousel Navigation Arrows */
+      .carousel-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.7);
+        border: none;
+        padding: 10px 15px;
+        font-size: 1.5em;
+        color: var(--primary-pink);
+        cursor: pointer;
+        z-index: 11;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px var(--shadow-color);
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+      .carousel-nav-btn:hover {
+        background: var(--light-pink);
+        transform: translateY(-50%) scale(1.1);
+      }
+      .carousel-nav-btn.prev {
+        left: -30px; /* Position outside carousel slightly */
+      }
+      .carousel-nav-btn.next {
+        right: -30px; /* Position outside carousel slightly */
+      }
+
+      /* --- NEW SECTION 6: FINAL GRAND MESSAGE & CELEBRATION --- */
+      .final-message {
+        font-family: 'Dancing Script', cursive;
+        font-size: 7em;
+        color: var(--light-pink);
+        text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8) rotate(-10deg);
+        animation: final-message-reveal 2s forwards cubic-bezier(0.68, -0.55, 0.265, 1.55)
+          0.5s; /* Bouncy entrance */
+        z-index: 20;
+        text-align: center;
+      }
+
+      /* --- ANIMATIONS --- */
+
+      /* Magic Curtain Sparkles */
+      @keyframes curtain-sparkle {
+        0% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.5);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+      }
+
+      /* Section 1 Animations */
+      @keyframes hanging-balloon-swing {
+        0% {
+          transform: rotate(-3deg);
+        }
+        50% {
+          transform: rotate(3deg);
+        }
+        100% {
+          transform: rotate(-3deg);
+        }
+      }
+      @keyframes balloon-float {
+        0% {
+          transform: translateX(-50%) translateY(0px) scale(0.9);
+        }
+        50% {
+          transform: translateX(-50%) translateY(-10px) scale(1);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0px) scale(0.9);
+        }
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(-10vh) rotateX(var(--random-rotX))
+            rotateY(var(--random-rotY)) rotateZ(var(--random-rotZ))
+            translateX(var(--random-x-offset));
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotateX(var(--random-rotX))
+            rotateY(var(--random-rotY)) rotateZ(var(--random-rotZ))
+            translateX(var(--random-x-offset));
+          opacity: 0;
+        }
+      }
+
+      @keyframes confetti-spin {
+        from {
+          transform: rotateY(0deg) rotateZ(0deg);
+        }
+        to {
+          transform: rotateY(360deg) rotateZ(360deg);
+        }
+      }
+
+      @keyframes confetti-flicker {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      @keyframes banner-pop-in {
+        0% {
+          opacity: 0;
+          transform: translateY(-100px) scale(0.5) rotateX(90deg);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(10px) scale(1.1) rotateX(-10deg);
+        }
+        100% {
+          transform: translateY(0px) scale(1) rotateX(0deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes welcome-fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(-50px) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0px) scale(1);
+        }
+      }
+
+      /* Section 2 Animations */
+      @keyframes sparkle-glow {
+        0% {
+          opacity: 0;
+          transform: scale(0.5) translateY(0);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2) translateY(-5px);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.5) translateY(0);
+        }
+      }
+
+      @keyframes gift-bounce {
+        0%,
+        100% {
+          transform: translateY(0) scale(1) rotateY(0deg);
+        }
+        50% {
+          transform: translateY(-15px) scale(1.05) rotateY(5deg);
+        }
+      }
+
+      @keyframes gift-explode-particle {
+        0% {
+          opacity: 1;
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(
+              var(--random-x, 0),
+              var(--random-y, 0)
+            )
+            scale(0);
+        }
+      }
+
+      @keyframes hint-pulse {
+        0% {
+          transform: scale(1) translateY(0px);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.05) translateY(-5px);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1) translateY(0px);
+          opacity: 0.8;
+        }
+      }
+
+      /* Section 3 Animations */
+      @keyframes water-surface {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(10px);
+        }
+      }
+
+      @keyframes wishing-star-rise {
+        0% {
+          opacity: 0;
+          transform: translateY(0) scale(0.5) rotate(0deg);
+        }
+        30% {
+          opacity: 1;
+          transform: translateY(-20px) scale(1) rotate(20deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-200px) scale(0.8) rotate(60deg);
+        }
+      }
+
+      @keyframes button-pulse {
+        0%,
+        100% {
+          transform: translateY(0px) scale(1);
+        }
+        50% {
+          transform: translateY(-5px) scale(1.02);
+        }
+      }
+
+      /* Section 4 Animations (NEW/ENHANCED) */
+      @keyframes cake-pop-in {
+        0% {
+          opacity: 0;
+          transform: translateY(200px) scale(0.2) rotateX(90deg);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(-20px) scale(1.1) rotateX(-10deg);
+        }
+        100% {
+          transform: translateY(0px) scale(1) rotateX(0deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes cake-layer-bounce-in {
+        0% {
+          opacity: 0;
+          transform: translateY(100px) scale(0.5);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(-10px) scale(1.05);
+        }
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes drip {
+        0% {
+          transform: translateY(-30px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes sprinkle-fall {
+        0% {
+          opacity: 0;
+          transform: translateY(-50px) rotate(var(--random-rotZ)) scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) rotate(var(--random-rotZ)) scale(1);
+        }
+      }
+
+      @keyframes candle-light-up {
+        0% {
+          opacity: 0;
+          transform: translateY(50px) scale(0);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(-5px) scale(1.1);
+        }
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes flame-flicker {
+        0% {
+          transform: translateX(-50%) scaleY(1) scaleX(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translateX(-50%) scaleY(0.9) scaleX(1.05);
+          opacity: 0.9;
+        }
+        100% {
+          transform: translateX(-50%) scaleY(1) scaleX(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes flame-extinguish {
+        0% {
+          opacity: 1;
+          transform: translateX(-50%) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(-50%) scale(0.5) translateY(10px);
+        }
+      }
+
+      @keyframes puff-effect {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 1;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.2);
+          opacity: 0.7;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1.8);
+          opacity: 0;
+        }
+      }
+
+      @keyframes cake-message-pop {
+        0% {
+          opacity: 0;
+          transform: translateY(-100px) scale(0.5) rotateX(90deg);
+        }
+        60% {
+          opacity: 1;
+          transform: translateY(10px) scale(1.1) rotateX(-10deg);
+        }
+        100% {
+          transform: translateY(0px) scale(1) rotateX(0deg);
+          opacity: 1;
+        }
+      }
+
+      /* SECTION 5 CAROUSEL ANIMATIONS (NEW) */
+      @keyframes card-flip-in {
+        0% {
+          opacity: 0;
+          transform: rotateY(90deg) scale(0.8);
+        }
+        70% {
+          opacity: 1;
+          transform: rotateY(-10deg) scale(1.05);
+        }
+        100% {
+          opacity: 1;
+          transform: rotateY(0deg) scale(1);
+        }
+      }
+
+      @keyframes card-flip-out {
+        0% {
+          opacity: 1;
+          transform: rotateY(0deg) scale(1);
+        }
+        30% {
+          opacity: 1;
+          transform: rotateY(10deg) scale(0.95);
+        }
+        100% {
+          opacity: 0;
+          transform: rotateY(-90deg) scale(0.8);
+        }
+      }
+
+      /* Kyootu Animations */
+      @keyframes kyootu-idle {
+        0%,
+        100% {
+          transform: translateY(0px) scale(1);
+        }
+        50% {
+          transform: translateY(-8px) scale(1);
+        }
+      }
+      @keyframes kyootu-hop {
+        0% {
+          transform: translateY(0px) scale(1);
+        }
+        50% {
+          transform: translateY(-20px) scale(1.1);
+        }
+        100% {
+          transform: translateY(0px) scale(1);
+        }
+      }
+      @keyframes kyootu-walk-cycle {
+        0% {
+          transform: translateY(0px) translateX(0px) rotateY(0deg);
+        }
+        25% {
+          transform: translateY(-5px) translateX(5px) rotateY(5deg);
+        }
+        50% {
+          transform: translateY(0px) translateX(0px) rotateY(0deg);
+        }
+        75% {
+          transform: translateY(-5px) translateX(-5px) rotateY(-5deg);
+        }
+        100% {
+          transform: translateY(0px) translateX(0px) rotateY(0deg);
+        }
+      }
+
+      @keyframes blush-pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+
+      /* Section 6 Animations */
+      @keyframes final-message-reveal {
+        0% {
+          opacity: 0;
+          transform: translateY(-100px) scale(0.5) rotate(-10deg);
+        }
+        70% {
+          opacity: 1;
+          transform: translateY(20px) scale(1.1) rotate(5deg);
+        }
+        100% {
+          transform: translateY(0px) scale(1) rotate(0deg);
+          opacity: 1;
+        }
+      }
+
+      /* --- RESPONSIVENESS --- */
+      @media (max-width: 768px) {
+        /* General Kyootu positioning for interactive sections */
+        #section2 .cute-kyootu,
+        #section3 .cute-kyootu {
+          bottom: auto;
+          top: 10%; /* Move Kyootu to the top */
+          left: 50%;
+          transform: translateX(-50%) scale(0.7); /* Smaller scale */
+          animation: kyootu-idle 4s ease-in-out infinite alternate; /* Keep idle */
+        }
+        #section4 .cute-kyootu {
+            bottom: auto; /* Allow auto positioning for cake */
+            top: 5%;
+            right: 5%;
+            transform: translateX(0) scale(0.7);
+        }
+
+        /* Section 1 */
+        .party-banner {
+          font-size: 4em;
+          top: 10%;
+        }
+        .welcome-message {
+          font-size: 1.5em;
+          top: 25%;
+        }
+        .hanging-balloon-group {
+          width: 80px; /* Smaller balloons */
+          height: 40vh;
+        }
+        .hanging-balloon-group .balloon-svg {
+          transform: translateX(-50%) scale(0.6);
+        }
+
+        /* Section 2 - Gifts */
+        .gift-box {
+          width: 80px;
+          height: 70px;
+          font-size: 0.8em;
+          /* Re-position gifts to be more central and visible */
+          left: auto !important; /* Override inline styles */
+          right: auto !important;
+          transform: none !important; /* Reset initial transform */
+          margin: 0 10px 0 10px; /* Space them out */
+          bottom: 20%; /* Move higher */
+        }
+        #gift1 { left: 15%; bottom: 25%; }
+        #gift2 { right: 15%; bottom: 20%; }
+        #gift3 { left: 30%; bottom: 15%; }
+        #gift4 { right: 5%; bottom: 30%; width: 70px; height: 60px; } /* Adjust size for #gift4 specifically */
+        #gift5 { left: 50%; transform: translateX(-50%); bottom: 22%; } /* Centered */
+
+        .gift-box-bow {
+          transform: translateX(-50%) scale(0.4);
+        }
+        #gift-hint-message {
+          font-size: 1.8em;
+          bottom: 45%; /* Adjust position to be higher, below Kyootu */
+          max-width: 80%; /* Ensure it doesn't overflow */
+          z-index: 10;
+        }
+
+        /* Section 3 - Wishing Well */
+        .wishing-well {
+          width: 280px;
+          height: 200px;
+          bottom: 10%;
+        }
+        .wishing-star-btn {
+          font-size: 1em;
+          padding: 10px 20px;
+          bottom: 250px; /* Adjust button position to be visible below Kyootu */
+          z-index: 10;
+        }
+
+        /* Section 4 */
+        .cake-stand-reveal {
+          width: 220px;
+          height: 30px;
+        }
+        .cake-wrapper {
+          bottom: calc(18% + 30px);
+        }
+        .cake-layer {
+          width: 240px;
+          height: 70px;
+        }
+        .cake-layer:nth-child(2) {
+          width: 190px;
+          height: 60px;
+          margin-top: -20px;
+        }
+        .cake-layer:nth-child(3) {
+          width: 150px;
+          height: 50px;
+          margin-top: -20px;
+        }
+        .candles {
+          gap: 10px;
+          top: -20px;
+        }
+        .candle {
+          width: 10px;
+          height: 40px;
+        }
+        .flame {
+          width: 8px;
+          height: 12px;
+        }
+        .cake-message {
+          font-size: 3em;
+          top: 15%;
+        }
+        .cute-kyootu {
+          width: 150px;
+          height: 200px;
+        }
+
+        /* Section 5 - Memory Carousel */
+        .memory-carousel {
+          width: 90%;
+          height: 50%;
+          padding: 10px;
+        }
+        .memory-slide {
+          font-size: 1.5em;
+          padding: 15px;
+        }
+        .memory-slide img {
+          width: 80px;
+          height: 80px;
+        }
+        .carousel-nav-btn {
+          font-size: 1.2em;
+          padding: 8px 12px;
+          left: -15px; /* Adjust positions */
+          right: -15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+         /* General Kyootu positioning for interactive sections */
+        #section2 .cute-kyootu,
+        #section3 .cute-kyootu {
+          top: 5%; /* Even higher */
+          transform: translateX(-50%) scale(0.6); /* Even smaller */
+        }
+        #section4 .cute-kyootu {
+            top: 2%; /* Even higher for cake */
+            right: 2%;
+            transform: translateX(0) scale(0.6);
+        }
+
+        /* Section 1 */
+        .party-banner {
+          font-size: 3em;
+        }
+        .welcome-message {
+          font-size: 1.2em;
+        }
+        .hanging-balloon-group {
+          width: 60px; /* Even smaller balloons */
+          height: 30vh;
+        }
+        .hanging-balloon-group .balloon-svg {
+          transform: translateX(-50%) scale(0.5);
+        }
+
+        /* Section 2 - Gifts */
+        .gift-box {
+          width: 60px;
+          height: 50px;
+          font-size: 0.7em;
+          /* More precise positioning for mobile to prevent overlap */
+        }
+        #gift1 { left: 5%; bottom: 28%; }
+        #gift2 { right: 5%; bottom: 25%; }
+        #gift3 { left: 25%; bottom: 20%; }
+        #gift4 { right: 15%; bottom: 30%; width: 50px; height: 40px; }
+        #gift5 { left: 50%; transform: translateX(-50%); bottom: 22%; }
+
+        .gift-box-bow {
+          transform: translateX(-50%) scale(0.3);
+        }
+        #gift-hint-message {
+          font-size: 1.5em;
+          bottom: 45%;
+        }
+
+        /* Section 3 - Wishing Well */
+        .wishing-well {
+          width: 200px;
+          height: 150px;
+          bottom: 10%;
+        }
+        .wishing-star-btn {
+          font-size: 0.9em;
+          padding: 8px 15px;
+          bottom: 170px;
+        }
+
+        /* Section 4 */
+        .cake-stand-reveal {
+          width: 180px;
+          height: 25px;
+        }
+        .cake-wrapper {
+          bottom: calc(18% + 25px);
+        }
+        .cake-layer {
+          width: 200px;
+          height: 60px;
+        }
+        .cake-layer:nth-child(2) {
+          width: 160px;
+          height: 50px;
+          margin-top: -18px;
+        }
+        .cake-layer:nth-child(3) {
+          width: 120px;
+          height: 40px;
+          margin-top: -18px;
+        }
+        .candles {
+          gap: 8px;
+          top: -15px;
+        }
+        .candle {
+          width: 8px;
+          height: 35px;
+        }
+        .flame {
+          width: 6px;
+          height: 10px;
+        }
+        .cake-message {
+          font-size: 2.2em;
+          top: 12%;
+        }
+        .cute-kyootu {
+          width: 120px;
+          height: 170px;
+        }
+
+        /* Section 5 - Memory Carousel */
+        .memory-carousel {
+          width: 95%;
+          height: 45%;
+          max-height: 300px; /* Constrain height more */
+          padding: 5px;
+        }
+        .memory-slide {
+          font-size: 1.2em;
+          padding: 10px;
+        }
+        .memory-slide img {
+          width: 60px;
+          height: 60px;
+        }
+        .carousel-nav-btn {
+          display: none; /* Hide buttons on very small screens, rely on auto-play */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Magic Curtain Overlay -->
+    <div id="magic-curtain"></div>
+
+    <div class="container">
+      <!-- Kyootu Character - Defined once, positioned by JS/CSS per section -->
+      <div class="cute-kyootu" id="main-kyootu-char">
+        <svg class="kyootu-svg" viewBox="0 0 200 300">
+          <!-- Hair (behind head) -->
+          <g id="kyootu-hair">
+            <path
+              d="M100,50 C140,0 180,20 170,80 C160,140 100,150 100,150 C100,150 40,140 30,80 C20,20 60,0 100,50 Z"
+              fill="var(--kyootu-hair)"
+            />
+            <!-- Side bangs -->
+            <path
+              d="M85,50 C70,30 60,40 50,60 C45,75 50,80 60,75 C70,70 80,60 85,50 Z"
+              fill="var(--kyootu-hair)"
+              id="kyootu-bang-left"
+            />
+            <path
+              d="M115,50 C130,30 140,40 150,60 C155,75 150,80 140,75 C130,70 120,60 115,50 Z"
+              fill="var(--kyootu-hair)"
+              id="kyootu-bang-right"
+            />
+          </g>
+
+          <!-- Body -->
+          <rect id="kyootu-body" x="60" y="140" width="80" height="120" rx="40" ry="60" />
+
+          <!-- Head -->
+          <circle id="kyootu-head" cx="100" cy="100" r="55" />
+
+          <!-- Face features -->
+          <circle class="kyootu-eye" cx="80" cy="90" r="5" />
+          <circle class="kyootu-eye" cx="120" cy="90" r="5" />
+          <path
+            id="kyootu-mouth"
+            d="M90,115 Q100,125 110,115"
+            stroke="#F06292"
+            stroke-width="3"
+            fill="none"
+            stroke-linecap="round"
+          />
+          <ellipse class="kyootu-blush" cx="70" cy="110" rx="8" ry="4" />
+          <ellipse class="kyootu-blush" cx="130" cy="110" rx="8" ry="4" />
+
+          <!-- Arms -->
+          <path
+            id="kyootu-arm-left"
+            class="kyootu-arm"
+            d="M75,150 C60,140 50,170 60,200 C70,230 80,210 75,150 Z"
+          />
+          <path
+            id="kyootu-arm-right"
+            class="kyootu-arm"
+            d="M125,150 C140,140 150,170 140,200 C130,230 120,210 125,150 Z"
+          />
+
+          <!-- Shoes -->
+          <rect class="kyootu-shoe" x="65" y="250" width="30" height="15" rx="7" />
+          <rect class="kyootu-shoe" x="105" y="250" width="30" height="15" rx="7" />
+        </svg>
+      </div>
+      <!-- END Kyootu Character -->
+
+      <!-- SECTION 1: THE GRAND OVERTURE -->
+      <section id="section1" class="section">
+        <div class="balloon-wrapper">
+          <div class="hanging-balloon-group">
+            <div class="balloon-string" style="height: 60vh;"></div>
+            <svg class="balloon-svg" viewBox="0 0 100 130">
+              <path
+                d="M50,125 C50,110 50,70 50,45 C50,20 40,0 20,0 C0,0 0,20 0,45 C0,70 0,110 0,125 Z"
+                transform="scale(1 0.8) translate(0 10)"
+              />
+              <circle cx="50" cy="120" r="3" fill="#333" />
+            </svg>
+          </div>
+          <div class="hanging-balloon-group">
+            <div class="balloon-string" style="height: 70vh;"></div>
+            <svg class="balloon-svg" viewBox="0 0 100 130">
+              <path
+                d="M50,125 C50,110 50,70 50,45 C50,20 40,0 20,0 C0,0 0,20 0,45 C0,70 0,110 0,125 Z"
+                transform="scale(1 0.8) translate(0 10)"
+              />
+              <circle cx="50" cy="120" r="3" fill="#333" />
+            </svg>
+          </div>
+          <div class="hanging-balloon-group">
+            <div class="balloon-string" style="height: 55vh;"></div>
+            <svg class="balloon-svg" viewBox="0 0 100 130">
+              <path
+                d="M50,125 C50,110 50,70 50,45 C50,20 40,0 20,0 C0,0 0,20 0,45 C0,70 0,110 0,125 Z"
+                transform="scale(1 0.8) translate(0 10)"
+              />
+              <circle cx="50" cy="120" r="3" fill="#333" />
+            </svg>
+          </div>
+          <div class="hanging-balloon-group">
+            <div class="balloon-string" style="height: 65vh;"></div>
+            <svg class="balloon-svg" viewBox="0 0 100 130">
+              <path
+                d="M50,125 C50,110 50,70 50,45 C50,20 40,0 20,0 C0,0 0,20 0,45 C0,70 0,110 0,125 Z"
+                transform="scale(1 0.8) translate(0 10)"
+              />
+              <circle cx="50" cy="120" r="3" fill="#333" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="confetti-burst" id="section1-confetti-burst"></div>
+        <div class="confetti-container" id="section1-confetti-continuous"></div>
+
+        <h1 class="party-banner">Happy Birthday!</h1>
+        <p class="welcome-message">
+          A magical surprise awaits you, dear Kyootu!
+        </p>
+      </section>
+
+      <!-- SECTION 2: THE GIFT GARDEN -->
+      <section id="section2" class="section">
+        <div class="path-wrapper"></div>
+        <div id="gift1" class="gift-box">
+          <div class="gift-box-bow"></div>
+        </div>
+        <div id="gift2" class="gift-box" style="background-color: var(--mint-green);">
+          <div class="gift-box-bow" style="background-color: var(--soft-yellow);"></div>
+        </div>
+        <div id="gift3" class="gift-box" style="background-color: var(--lavender);">
+          <div class="gift-box-bow" style="background-color: var(--primary-pink);"></div>
+        </div>
+        <div id="gift4" class="gift-box">
+          <div class="gift-box-bow"></div>
+        </div>
+        <div id="gift5" class="gift-box">
+          <div class="gift-box-bow"></div>
+        </div>
+        <p class="welcome-message" style="position: absolute; bottom: 50%;" id="gift-hint-message">
+          Click the gifts, Kyootu!
+        </p>
+      </section>
+
+      <!-- NEW SECTION 3: THE WISHING FOUNTAIN -->
+      <section id="section3" class="section">
+        <div class="wishing-well"></div>
+        <button class="wishing-star-btn" id="make-wish-btn">Make a Wish!</button>
+        <!-- Wishing stars will be dynamically added here -->
+      </section>
+
+      <!-- SECTION 4: THE CAKE REVEAL (ENHANCED) -->
+      <section id="section4" class="section">
+        <div class="cake-stand-reveal"></div>
+        <div class="cake-wrapper">
+          <div class="candles">
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+          </div>
+          <div class="cake-layer first-layer"></div>
+          <div class="cake-layer second-layer">
+            <div class="cake-drip" style="left: 10%;"></div>
+            <div class="cake-drip" style="left: 30%;"></div>
+            <div class="cake-drip" style="left: 50%;"></div>
+            <div class="cake-drip" style="left: 70%;"></div>
+            <div class="cake-drip" style="left: 90%;"></div>
+          </div>
+          <div class="cake-layer third-layer">
+            <div class="cake-drip" style="left: 0%;"></div>
+            <div class="cake-drip" style="left: 20%;"></div>
+            <div class="cake-drip" style="left: 40%;"></div>
+            <div class="cake-drip" style="left: 60%;"></div>
+            <div class="cake-drip" style="left: 80%;"></div>
+            <div class="cake-drip" style="left: 100%;"></div>
+          </div>
+        </div>
+
+        <h2 class="cake-message" id="cake-main-message"></h2>
+
+        <!-- Puff effect for blowing candles -->
+        <div id="puff-effect"></div>
+
+        <!-- Confetti for cake burst -->
+        <div class="confetti-burst" id="section4-confetti-burst"></div>
+      </section>
+
+      <!-- NEW SECTION 5: THE MEMORY CAROUSEL (ENHANCED) -->
+      <section id="section5" class="section">
+        <div class="memory-carousel">
+          <button class="carousel-nav-btn prev" aria-label="Previous Slide">&lsaquo;</button>
+          <div class="memory-slide-container">
+            <div class="memory-slide">
+              <div class="memory-slide-content">
+                "To many more adventures together, Kyootu!"
+                <img src="https://via.placeholder.com/150/FFB6C1/FFFFFF?text=Smile" alt="Memory Image 1">
+              </div>
+            </div>
+            <div class="memory-slide">
+              <div class="memory-slide-content">
+                "May your day be filled with joy and laughter!"
+                <img src="https://via.placeholder.com/150/98FB98/FFFFFF?text=Wish" alt="Memory Image 2">
+              </div>
+            </div>
+            <div class="memory-slide">
+              <div class="memory-slide-content">
+                "Wishing you all your heart's desires!"
+                <img src="https://via.placeholder.com/150/FFD700/FFFFFF?text=Party" alt="Memory Image 3">
+              </div>
+            </div>
+            <div class="memory-slide">
+              <div class="memory-slide-content">
+                "So glad to celebrate with you!"
+                <img src="https://via.placeholder.com/150/E6E6FA/FFFFFF?text=Friends" alt="Memory Image 4">
+              </div>
+            </div>
+            <div class="memory-slide">
+              <div class="memory-slide-content">
+                "Here's to a year of new beginnings!"
+                <img src="https://via.placeholder.com/150/B76E79/FFFFFF?text=New" alt="Memory Image 5">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-nav-btn next" aria-label="Next Slide">&rsaquo;</button>
+        </div>
+      </section>
+
+      <!-- NEW SECTION 6: FINAL GRAND MESSAGE & CELEBRATION -->
+      <section id="section6" class="section">
+        <h2 class="final-message"></h2>
+        <p class="welcome-message" style="animation: none; opacity: 0; transition: opacity 1s ease-out; color: white; text-shadow: 2px 2px 5px rgba(0,0,0,0.4);">
+          And many, many more!
+        </p>
+        <div class="confetti-burst" id="section6-confetti-burst"></div>
+      </section>
+    </div>
+
+    <script>
+      // --- CONFIGURATION ---
+      const BIRTHDAY_GIRL_NAME = 'Kyootu';
+      const NUM_CONFETTI_BURST = 100;
+      const NUM_CONFETTI_CONTINUOUS = 50;
+      const NUM_SPARKLE_TRAIL = 40;
+      const NUM_WISHING_STARS_THROWN = 3; // How many wishes Kyootu can make
+      const NUM_CAKE_SPRINKLES = 120; // Increased sprinkles for grander effect
+      const SCROLL_DURATION_MS = 2000; // How long it takes to scroll between sections (increased)
+      const TRANSITION_DELAY_MS = 300; // Delay between section transforms (increased)
+      const MEMORY_SLIDE_INTERVAL = 5000; // How often slides change (increased for longer view)
+      const CAKE_CONFETTI_BURST = 80; // Confetti for cake section
+      const GIFT_EXPLOSION_PARTICLES = 15; // Number of particles for gift explosion
+
+      // --- UTILITY FUNCTIONS ---
+      function getRandom(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function createMagicCurtainSparkles() {
+        const curtain = document.getElementById('magic-curtain');
+        for (let i = 0; i < 50; i++) {
+          const sparkle = document.createElement('div');
+          sparkle.classList.add('sparkle-dot');
+          sparkle.style.width = `${getRandom(10, 30)}px`;
+          sparkle.style.height = sparkle.style.width;
+          sparkle.style.left = `${getRandom(0, 100)}vw`;
+          sparkle.style.top = `${getRandom(0, 100)}vh`;
+          sparkle.style.animationDelay = `${getRandom(0, 2)}s`;
+          sparkle.style.animationDuration = `${getRandom(1.5, 2.5)}s`;
+          curtain.appendChild(sparkle);
+        }
+      }
+
+      function createConfetti(container, count, durationModifier, spin = false) {
+        const colors = [
+          'var(--confetti-color1)',
+          'var(--confetti-color2)',
+          'var(--confetti-color3)',
+          'var(--confetti-color4)',
+          'var(--confetti-color5)',
+          'var(--primary-pink)',
+          'var(--soft-yellow)',
+          'var(--lavender)',
+        ];
+        const shapes = ['square', 'circle', 'heart', 'star', 'triangle']; // Added triangle
+
+        for (let i = 0; i < count; i++) {
+          const confetti = document.createElement('div');
+          confetti.classList.add('confetti-piece');
+
+          const shapeType = shapes[Math.floor(getRandom(0, shapes.length))];
+          const color = colors[Math.floor(getRandom(0, colors.length))];
+          const size = getRandom(8, 18); // Slightly larger confetti
+
+          confetti.style.width = `${size}px`;
+          confetti.style.height = `${size}px`;
+          confetti.style.setProperty('--random-rotZ', `${getRandom(0, 360)}deg`); /* For sprinkles too */
+
+          if (shapeType === 'circle') {
+            confetti.style.borderRadius = '50%';
+            confetti.style.backgroundColor = color;
+          } else if (shapeType === 'heart') {
+            confetti.style.backgroundColor = 'transparent';
+            // Simple heart shape
+            confetti.innerHTML = `
+              <div style="position:absolute; width:100%; height:100%; background:${color}; border-radius:50% 50% 0 0; transform:rotate(-45deg); transform-origin:0 100%;"></div>
+              <div style="position:absolute; width:100%; height:100%; background:${color}; border-radius:50% 50% 0 0; transform:rotate(45deg); transform-origin:100% 100%;"></div>
+            `;
+            confetti.style.width = `${size * 1.2}px`; // Make hearts slightly larger to be visible
+            confetti.style.height = `${size * 1.2}px`;
+          } else if (shapeType === 'star') {
+            confetti.style.backgroundColor = 'transparent';
+            confetti.innerHTML = `
+            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" stroke="${color}" stroke-width="0">
+              <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 18.295l-7.416 3.974 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+            </svg>
+            `;
+          } else if (shapeType === 'triangle') {
+            confetti.style.backgroundColor = 'transparent';
+            confetti.style.borderLeft = `${size / 2}px solid transparent`;
+            confetti.style.borderRight = `${size / 2}px solid transparent`;
+            confetti.style.borderBottom = `${size}px solid ${color}`;
+            confetti.style.width = '0';
+            confetti.style.height = '0';
+          } else {
+            confetti.style.backgroundColor = color;
+          }
+
+          confetti.style.left = `${getRandom(0, 100)}vw`;
+          confetti.style.top = `${getRandom(-20, 0)}vh`;
+          confetti.style.setProperty('--duration', `${getRandom(5, 10) * durationModifier}s`);
+          confetti.style.setProperty('--random-rotX', `${getRandom(-360, 360)}deg`);
+          confetti.style.setProperty('--random-rotY', `${getRandom(-360, 360)}deg`);
+          confetti.style.setProperty('--random-rotZ', `${getRandom(-360, 360)}deg`);
+          confetti.style.setProperty('--random-x-offset', `${getRandom(-50, 50)}px`);
+          confetti.style.animationDelay = `${getRandom(0, 5)}s`;
+
+          if (spin) {
+            confetti.style.animation += ', confetti-spin 1s infinite linear';
+          }
+
+          container.appendChild(confetti);
+        }
+      }
+
+      function createSparkleTrail() {
+        const pathWrapper = document.querySelector('.path-wrapper');
+        for (let i = 0; i < NUM_SPARKLE_TRAIL; i++) {
+          const sparkle = document.createElement('div');
+          sparkle.classList.add('sparkle-trail');
+          sparkle.style.width = `${getRandom(15, 25)}px`;
+          sparkle.style.height = sparkle.style.width;
+          sparkle.style.left = `${getRandom(10, 90)}%`;
+          sparkle.style.top = `${getRandom(0, 100)}%`;
+          sparkle.style.animationDelay = `${getRandom(0, 2)}s`;
+          pathWrapper.appendChild(sparkle);
+        }
+      }
+
+      function createGiftExplosion(giftElement) {
+        const rect = giftElement.getBoundingClientRect();
+        const colors = [
+          'var(--primary-pink)',
+          'var(--light-pink)',
+          'var(--soft-yellow)',
+          'var(--mint-green)',
+          'var(--lavender)',
+        ];
+
+        for (let i = 0; i < GIFT_EXPLOSION_PARTICLES; i++) {
+          const particle = document.createElement('div');
+          particle.classList.add('gift-explosion-particle');
+          particle.style.backgroundColor =
+            colors[Math.floor(getRandom(0, colors.length))];
+          
+          // Position relative to the center of the gift
+          particle.style.left = `${rect.width / 2}px`;
+          particle.style.top = `${rect.height / 2}px`;
+
+          // Randomize trajectory
+          const angle = getRandom(0, 2 * Math.PI); // Full circle
+          const distance = getRandom(20, 80); // How far it flies
+          const translateX = Math.cos(angle) * distance;
+          const translateY = Math.sin(angle) * distance;
+
+          particle.style.setProperty('--random-x', `${translateX}px`);
+          particle.style.setProperty('--random-y', `${translateY}px`);
+          particle.style.animationDelay = `${getRandom(0, 0.2)}s`;
+          particle.style.animationDuration = `${getRandom(0.6, 1.2)}s`;
+
+          giftElement.appendChild(particle);
+
+          // Remove particle after animation
+          particle.addEventListener('animationend', () => {
+            particle.remove();
+          });
+        }
+      }
+
+
+      function throwWishingStar(originX, originY) {
+        const wishingWell = document.querySelector('.wishing-well');
+        const star = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        star.setAttribute('class', 'wishing-star');
+        star.setAttribute('viewBox', '0 0 24 24');
+        star.innerHTML = `<path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 18.295l-7.416 3.974 1.481-8.279-6.064-5.828 8.332-1.151z"/>`;
+
+        // Position near Kyootu's hand
+        star.style.position = 'fixed'; // Use fixed for precise placement
+        star.style.left = `${originX}px`;
+        star.style.top = `${originY}px`;
+        star.style.opacity = '1';
+        document.body.appendChild(star); // Append to body to not be clipped by section
+
+        // Animate the star moving towards the well and then rising
+        const wellRect = wishingWell.getBoundingClientRect();
+        const targetX = wellRect.left + wellRect.width / 2;
+        const targetY = wellRect.top + wellRect.height * 0.7; // Aim for water surface
+
+        star.animate(
+          [
+            { transform: `translate(0, 0) scale(1) rotate(0deg)`, opacity: 1 },
+            {
+              transform: `translate(${targetX - originX}px, ${
+                targetY - originY
+              }px) scale(0.8) rotate(30deg)`,
+              opacity: 0.8,
+            },
+            {
+              transform: `translate(${targetX - originX + getRandom(-20, 20)}px, ${
+                targetY - originY - 150
+              }px) scale(0.6) rotate(90deg)`,
+              opacity: 0,
+            },
+          ],
+          {
+            duration: 2500,
+            easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            fill: 'forwards',
+          },
+        ).onfinish = () => star.remove();
+      }
+
+      function createCakeSprinkles() {
+        const cakeLayers = document.querySelectorAll('#section4 .cake-layer');
+        const sprinkleColors = ['red', 'blue', 'green', 'purple', 'yellow'];
+
+        cakeLayers.forEach((layer, layerIndex) => {
+          // Adjust sprinkle count per layer
+          const currentLayerSprinkles =
+            layerIndex === 0 ? Math.floor(NUM_CAKE_SPRINKLES * 0.4) : layerIndex === 1 ? Math.floor(NUM_CAKE_SPRINKLES * 0.3) : Math.floor(NUM_CAKE_SPRINKLES * 0.3);
+
+          for (let i = 0; i < currentLayerSprinkles; i++) {
+            const sprinkle = document.createElement('div');
+            sprinkle.classList.add('sprinkle');
+            sprinkle.style.backgroundColor = `var(--sprinkle-${
+              sprinkleColors[Math.floor(getRandom(0, sprinkleColors.length))]
+            })`;
+
+            const size = getRandom(3, 8); // Varied sprinkle sizes
+            sprinkle.style.width = `${size}px`;
+            sprinkle.style.height = `${size * 2.5}px`; // Rectangular sprinkles
+
+            // Position sprinkles within the layer
+            sprinkle.style.left = `${getRandom(5, 95)}%`;
+            sprinkle.style.top = `${getRandom(0, 60)}%`; // Confine to top part of the layer
+
+            sprinkle.style.setProperty('--random-rotZ', `${getRandom(0, 180)}deg`);
+            sprinkle.style.animationDelay = `${getRandom(0, 1)}s`;
+            sprinkle.style.animationDuration = `${getRandom(0.6, 1.2)}s`; // Varied fall duration
+            layer.appendChild(sprinkle);
+          }
+        });
+      }
+
+      let blinkInterval;
+      function startKyootuBlinking() {
+        const eyes = document.querySelectorAll('#main-kyootu-char .kyootu-eye');
+        blinkInterval = setInterval(() => {
+          eyes.forEach((eye) => (eye.style.transform = 'scaleY(0)'));
+          setTimeout(() => {
+            eyes.forEach((eye) => (eye.style.transform = 'scaleY(1)'));
+          }, 100); // Blink duration
+        }, getRandom(3000, 7000)); // Blink every 3-7 seconds
+      }
+
+      function stopKyootuBlinking() {
+        clearInterval(blinkInterval);
+        document.querySelectorAll('#main-kyootu-char .kyootu-eye').forEach((eye) => (eye.style.transform = 'scaleY(1)')); // Ensure eyes are open
+      }
+
+      let walkAnimation;
+      async function startKyootuWalking(duration = 2000, distance = 100) {
+        stopKyootuBlinking();
+        const kyootu = document.getElementById('main-kyootu-char');
+        kyootu.style.animation = 'none'; // Temporarily stop idle animation
+        const initialTransform = kyootu.style.transform;
+
+        // Apply walk cycle animation directly
+        kyootu.style.animation = 'kyootu-walk-cycle 1s infinite linear';
+
+        walkAnimation = kyootu.animate(
+          [
+            { transform: initialTransform }, // Start from current transform
+            { transform: `${initialTransform} translateX(${distance}px)` },
+          ],
+          {
+            duration: duration,
+            easing: 'linear',
+            fill: 'forwards',
+          },
+        );
+
+        const leftShoe = document.querySelector('.kyootu-shoe:nth-child(1)');
+        const rightShoe = document.querySelector('.kyootu-shoe:nth-child(2)');
+        let stepCount = 0;
+        const stepInterval = setInterval(() => {
+          if (stepCount % 2 === 0) {
+            leftShoe.classList.add('step-left');
+            rightShoe.classList.remove('step-right');
+          } else {
+            rightShoe.classList.add('step-right');
+            leftShoe.classList.remove('step-left');
+          }
+          stepCount++;
+          if (!walkAnimation || walkAnimation.playState === 'finished' || walkAnimation.playState === 'cancelled') {
+            clearInterval(stepInterval);
+            leftShoe.classList.remove('step-left');
+            rightShoe.classList.remove('step-right');
+          }
+        }, 300); // Step every 300ms
+
+        await walkAnimation.finished; // Wait for the walking animation to complete
+
+        kyootu.style.animation = 'kyootu-idle 4s ease-in-out infinite alternate'; // Resume idle animation
+        startKyootuBlinking();
+      }
+
+
+      function stopKyootuWalking() {
+        if (walkAnimation) {
+          walkAnimation.cancel(); // Stop the movement animation
+          const kyootu = document.getElementById('main-kyootu-char');
+          kyootu.style.animation = 'kyootu-idle 4s ease-in-out infinite alternate'; // Resume idle animation
+          document.querySelector('.kyootu-shoe:nth-child(1)').classList.remove('step-left');
+          document.querySelector('.kyootu-shoe:nth-child(2)').classList.remove('step-right');
+        }
+        startKyootuBlinking();
+      }
+
+      let carouselInterval;
+      let currentSlide = 0;
+      let slides;
+      let carouselActive = false; // Flag to indicate if carousel is active
+
+      // Function to show a specific slide with animation
+      async function showSlide(index, direction = 'next') {
+        if (!carouselActive || index === currentSlide && slides[index].classList.contains('active')) return; // Prevent re-animating same slide
+
+        const current = slides[currentSlide];
+        const next = slides[index];
+
+        if (current) {
+          // Clear previous content animation state
+          const currentContent = current.querySelector('.memory-slide-content');
+          if (currentContent) {
+            currentContent.style.opacity = 0;
+            currentContent.style.transform = 'translateY(20px) scale(0.8)';
+          }
+
+          current.style.zIndex = 1; // Put current slide behind
+          // Animate current slide out
+          current.animate(
+            [
+              { transform: 'rotateY(0deg) scale(1)', opacity: 1 },
+              { transform: `rotateY(${direction === 'next' ? -90 : 90}deg) scale(0.8)`, opacity: 0 },
+            ],
+            {
+              duration: 800, // Longer, smoother transition
+              easing: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+              fill: 'forwards',
+            },
+          ).onfinish = () => {
+            current.style.opacity = 0; // Ensure it's hidden
+            current.classList.remove('active');
+            // Reset transforms for the next time it becomes active
+            current.style.transform = '';
+          };
+        }
+
+        next.style.zIndex = 2; // Bring next slide to front
+        next.classList.add('active');
+        // Animate next slide in
+        next.animate(
+          [
+            { transform: `rotateY(${direction === 'next' ? 90 : -90}deg) scale(0.8)`, opacity: 0 },
+            { transform: 'rotateY(0deg) scale(1)', opacity: 1 },
+          ],
+          {
+            duration: 800, // Longer, smoother transition
+            easing: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+            fill: 'forwards',
+          },
+        ).onfinish = () => {
+          // Trigger content animation after slide is in place
+          const content = next.querySelector('.memory-slide-content');
+          if (content) {
+            content.style.opacity = 1;
+            content.style.transform = 'translateY(0) scale(1)';
+          }
+        };
+
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        stopMemoryCarousel(); // Stop auto-play temporarily
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex, 'next');
+        startMemoryCarousel(); // Restart auto-play
+      }
+
+      function prevSlide() {
+        stopMemoryCarousel(); // Stop auto-play temporarily
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex, 'prev');
+        startMemoryCarousel(); // Restart auto-play
+      }
+
+      function startMemoryCarousel() {
+        if (!carouselActive) return; // Only start if section is active
+        clearInterval(carouselInterval); // Clear any existing interval
+        carouselInterval = setInterval(nextSlide, MEMORY_SLIDE_INTERVAL);
+      }
+
+      function stopMemoryCarousel() {
+        clearInterval(carouselInterval);
+      }
+
+
+      // --- ANIMATION SEQUENCE ---
+      async function startAnimationSequence() {
+        const magicCurtain = document.getElementById('magic-curtain');
+        const sections = document.querySelectorAll('.section');
+        const mainKyootuChar = document.getElementById('main-kyootu-char');
+        const banner = document.querySelector('.party-banner');
+        const welcomeMessage = document.querySelector('.welcome-message');
+        const section1ConfettiBurst = document.getElementById('section1-confetti-burst');
+        const section1ConfettiContinuous = document.getElementById('section1-confetti-continuous');
+        const hangingBalloons = document.querySelectorAll('.hanging-balloon-group');
+
+        const pathWrapper = document.querySelector('.path-wrapper');
+        const giftBoxes = document.querySelectorAll('.gift-box');
+        const giftBows = document.querySelectorAll('.gift-box-bow');
+        const giftHintMessage = document.getElementById('gift-hint-message');
+
+        const wishingWell = document.querySelector('.wishing-well');
+        const makeWishBtn = document.getElementById('make-wish-btn');
+
+        const cakeStand = document.querySelector('.cake-stand-reveal');
+        const cakeWrapper = document.querySelector('.cake-wrapper');
+        const cakeLayers = document.querySelectorAll('#section4 .cake-layer');
+        const cakeDrips = document.querySelectorAll('#section4 .cake-drip');
+        const candles = document.querySelectorAll('.candle');
+        const flames = document.querySelectorAll('.flame');
+        const puffEffect = document.getElementById('puff-effect');
+        const cakeMainMessage = document.getElementById('cake-main-message'); // New cake message
+        const section4ConfettiBurst = document.getElementById('section4-confetti-burst'); // New cake confetti
+
+        const memoryCarousel = document.querySelector('.memory-carousel');
+        slides = document.querySelectorAll('.memory-slide'); // Initialize slides here
+        const prevBtn = document.querySelector('.carousel-nav-btn.prev');
+        const nextBtn = document.querySelector('.carousel-nav-btn.next');
+
+
+        const finalMessage = document.querySelector('.final-message');
+        const finalSubMessage = document.querySelector('#section6 .welcome-message');
+        const section6ConfettiBurst = document.getElementById('section6-confetti-burst');
+
+        const kyootuArms = document.querySelectorAll('#main-kyootu-char .kyootu-arm');
+        const kyootuMouth = document.getElementById('kyootu-mouth');
+        const kyootuBlushes = document.querySelectorAll('#main-kyootu-char .kyootu-blush');
+        const kyootuEyes = document.querySelectorAll('#main-kyootu-char .kyootu-eye');
+
+        // Initial setup for messages
+        welcomeMessage.innerHTML = `A magical surprise awaits you, dear ${BIRTHDAY_GIRL_NAME}!`;
+        cakeMainMessage.textContent = `Happy Birthday!`; // Initialize cake message
+        finalMessage.textContent = `Happy Birthday, ${BIRTHDAY_GIRL_NAME}!`;
+
+        // Create initial elements
+        createMagicCurtainSparkles();
+        createConfetti(section1ConfettiBurst, NUM_CONFETTI_BURST, 0.5, true); // Burst, faster, with spin
+        createConfetti(section1ConfettiContinuous, NUM_CONFETTI_CONTINUOUS, 1, false); // Continuous, slower
+        createSparkleTrail(); // Section 2 elements pre-created
+        createCakeSprinkles(); // Section 4 sprinkles pre-created (will be animated later)
+        createConfetti(section4ConfettiBurst, CAKE_CONFETTI_BURST, 0.5, true); // Cake confetti burst
+
+        // 0. Initial curtain reveal
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Sparkles animate for a bit
+        magicCurtain.classList.add('opening'); // Add opening animation class
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Fade out duration
+        magicCurtain.remove(); // Clean up the curtain element
+
+        // Move Kyootu to initial position for Section 1
+        mainKyootuChar.style.opacity = '1';
+        mainKyootuChar.style.right = '10%';
+        mainKyootuChar.style.bottom = '5%';
+        mainKyootuChar.style.transform = 'translateX(0) scale(1)';
+        mainKyootuChar.style.animation = 'kyootu-hop 1s ease-out forwards'; // Hop in!
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        mainKyootuChar.style.animation = 'kyootu-idle 4s ease-in-out infinite alternate'; // Back to idle
+        startKyootuBlinking();
+        kyootuMouth.classList.add('happy-mouth');
+        kyootuBlushes.forEach((blush) => blush.classList.add('active'));
+
+        // 1. Phase 1: Section 1 - The Grand Overture
+        section1ConfettiBurst.classList.add('active'); // Trigger burst confetti
+        hangingBalloons.forEach((b, i) => {
+          setTimeout(() => b.classList.add('active'), i * 150); // Stagger balloon arrival
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1500)); // Burst fades, continuous starts
+        section1ConfettiBurst.style.opacity = '0'; // Hide burst confetti
+        section1ConfettiContinuous.style.opacity = '1'; // Continuous confetti visible
+
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // Let the first scene play
+
+        // 2. Phase 2: Transition to Section 2 - The Gift Garden
+        // Kyootu prepares for transition
+        kyootuBlushes.forEach((blush) => blush.classList.remove('active')); // Reset blush
+        kyootuMouth.classList.remove('happy-mouth'); // Reset mouth
+        kyootuMouth.classList.add('neutral-mouth'); // Neutral mouth for arrival
+
+        sections[0].style.transform = 'translateY(-100%)';
+        sections[1].style.transform = 'translateY(0)';
+        sections[1].style.opacity = '1';
+        await new Promise((resolve) => setTimeout(resolve, SCROLL_DURATION_MS + TRANSITION_DELAY_MS));
+
+        // Kyootu moves to the appropriate responsive position for gifts
+        mainKyootuChar.style.right = 'auto'; // Reset right for responsive left/transform
+        // Check screen width for responsive positioning
+        if (window.innerWidth <= 768) {
+             mainKyootuChar.style.left = '50%';
+             mainKyootuChar.style.bottom = 'auto';
+             mainKyootuChar.style.top = '10%';
+             mainKyootuChar.style.transform = 'translateX(-50%) scale(0.7)';
+        } else {
+            mainKyootuChar.style.left = '5%';
+            mainKyootuChar.style.bottom = '5%';
+            mainKyootuChar.style.top = 'auto';
+            mainKyootuChar.style.transform = 'translateX(0) scale(1)';
+        }
+        stopKyootuIdleAnimation(); // Stop idle to prepare for walk
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        // Gift Garden Reveal
+        pathWrapper.style.opacity = '1';
+        pathWrapper.style.transform = 'rotateX(70deg) translateY(0)'; // Path appears
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        giftBoxes.forEach((box, index) => {
+          setTimeout(() => {
+            box.style.opacity = '1';
+            box.style.transform = 'translateY(0) scale(1) rotateY(0deg)';
+            box.classList.add('bouncing'); // Start bounce animation
+            giftBows[index].style.opacity = '1';
+            giftBows[index].style.transform = 'translateX(-50%) scale(1)';
+          }, index * 250); // Stagger gift appearance
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        giftHintMessage.style.opacity = '1'; // Show animated hint to click gifts
+
+        let giftsCollected = 0;
+        const totalGifts = giftBoxes.length;
+
+        const allGiftsCollectedPromise = new Promise((resolve) => {
+          const handleGiftClick = async (event) => {
+            const clickedGift = event.currentTarget;
+            if (clickedGift.classList.contains('collected')) return;
+
+            // Trigger explosion effect
+            createGiftExplosion(clickedGift);
+
+            clickedGift.classList.add('collected'); // Disappear animation
+            clickedGift.classList.remove('bouncing'); // Stop bounce
+
+            giftsCollected++;
+
+            kyootuMouth.classList.remove('happy-mouth', 'neutral-mouth', 'thoughtful-mouth', 'blow-mouth');
+            kyootuMouth.classList.add('surprise-mouth'); // Kyootu looks surprised
+            kyootuBlushes.forEach((blush) => blush.classList.add('active')); // Blush when surprised
+
+            mainKyootuChar.style.animation = 'kyootu-hop 0.5s ease-out forwards'; // Small hop
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            mainKyootuChar.style.animation = 'kyootu-idle 4s ease-in-out infinite alternate'; // Back to idle
+            kyootuMouth.classList.remove('surprise-mouth');
+            kyootuMouth.classList.add('happy-mouth'); // Happy after surprise
+            kyootuBlushes.forEach((blush) => blush.classList.remove('active')); // Blush fades
+
+            if (giftsCollected === totalGifts) {
+              giftHintMessage.style.opacity = '0'; // Hide hint
+              giftBoxes.forEach((box) => box.removeEventListener('click', handleGiftClick));
+              resolve(); // Resolve the promise once all gifts are collected
+            }
+          };
+
+          giftBoxes.forEach((box) => {
+            box.addEventListener('click', handleGiftClick);
+          });
+        });
+
+        await allGiftsCollectedPromise; // Wait for all gifts to be clicked
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Short pause before moving on
+
+        // 3. Phase 3: Transition to Section 3 - The Wishing Fountain
+        // Kyootu prepares for transition
+        kyootuMouth.classList.remove('happy-mouth');
+        kyootuMouth.classList.add('thoughtful-mouth'); // Thoughtful for wishing
+
+        sections[1].style.transform = 'translateY(-100%)';
+        sections[2].style.transform = 'translateY(0)';
+        sections[2].style.opacity = '1';
+        await new Promise((resolve) => setTimeout(resolve, SCROLL_DURATION_MS + TRANSITION_DELAY_MS));
+
+        // Kyootu centers herself for the fountain (responsive position)
+        mainKyootuChar.style.right = 'auto'; // Reset right
+        mainKyootuChar.style.left = '50%';
+        mainKyootuChar.style.bottom = 'auto';
+        if (window.innerWidth <= 768) {
+            mainKyootuChar.style.top = '10%';
+            mainKyootuChar.style.transform = 'translateX(-50%) scale(0.7)';
+        } else {
+            mainKyootuChar.style.top = 'auto';
+            mainKyootuChar.style.bottom = '5%';
+            mainKyootuChar.style.transform = 'translateX(-50%) scale(1)';
+        }
+        stopKyootuIdleAnimation();
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+
+        wishingWell.style.opacity = '1';
+        wishingWell.style.transform = 'translateY(0) scale(1)';
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        makeWishBtn.style.opacity = '1';
+        makeWishBtn.style.transform = 'translateY(0) scale(1)';
+        // No longer 'pop' on entry, just animates to a slightly smaller scale for the pulse
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        // Kyootu makes a wish (close eyes, thoughtful mouth)
+        kyootuEyes.forEach((eye) => (eye.style.transform = 'scaleY(0)')); // Close eyes
+        stopKyootuBlinking(); // Stop regular blinking
+
+        let wishesMade = 0;
+
+        const allWishesMadePromise = new Promise((resolve) => {
+          const handleMakeWish = async () => {
+            if (wishesMade >= NUM_WISHING_STARS_THROWN) return;
+
+            wishesMade++;
+            makeWishBtn.textContent = `Wish (${wishesMade}/${NUM_WISHING_STARS_THROWN})`;
+            makeWishBtn.disabled = true; // Disable button briefly
+
+            // Kyootu's throwing pose
+            kyootuArms[0].classList.add('throw-pose'); // Left arm adjusts
+            kyootuArms[1].classList.add('throw-pose'); // Right arm for throwing
+            kyootuMouth.classList.add('neutral-mouth'); // Focused mouth
+            mainKyootuChar.style.transform = `translateX(-50%) scale(${window.innerWidth <= 768 ? 0.7 : 1}) translateY(-10px) rotate(5deg)`; // Lean into throw
+
+            // Get Kyootu's hand position for star origin (adapted for throw pose)
+            const kyootuArmRect = kyootuArms[1].getBoundingClientRect(); // Right arm
+            const originX = kyootuArmRect.left + kyootuArmRect.width * 0.7; // Closer to hand
+            const originY = kyootuArmRect.top + kyootuArmRect.height * 0.3; // Higher, as if releasing
+
+            throwWishingStar(originX, originY); // Throw a star
+            await new Promise((resolve) => setTimeout(resolve, 800)); // Pause during throw action
+
+            // Reset Kyootu's pose
+            kyootuArms[0].classList.remove('throw-pose');
+            kyootuArms[1].classList.remove('throw-pose');
+            mainKyootuChar.style.transform = `translateX(-50%) scale(${window.innerWidth <= 768 ? 0.7 : 1}) translateY(0) rotate(0deg)`; // Reset lean
+
+
+            if (wishesMade < NUM_WISHING_STARS_THROWN) {
+              await new Promise((resolve) => setTimeout(resolve, 1500)); // Pause between wishes
+              makeWishBtn.disabled = false; // Re-enable for next wish
+            } else {
+              makeWishBtn.textContent = 'Wish Granted!';
+              await new Promise((resolve) => setTimeout(resolve, 1500)); // Allow last star to animate
+              makeWishBtn.style.opacity = '0';
+              makeWishBtn.style.transform = 'translateY(20px) scale(0.8)';
+              makeWishBtn.remove(); // Clean up button
+              resolve(); // Resolve the promise
+            }
+          };
+
+          makeWishBtn.addEventListener('click', handleMakeWish);
+        });
+
+        await allWishesMadePromise; // Wait for all wishes to be made
+        kyootuEyes.forEach((eye) => (eye.style.transform = 'scaleY(1)')); // Open eyes
+        kyootuMouth.classList.remove('thoughtful-mouth');
+        kyootuMouth.classList.add('happy-mouth'); // Happy smile
+        startKyootuBlinking(); // Resume blinking
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        // 4. Phase 4: Transition to Section 4 - The Cake Reveal (ENHANCED)
+        // Kyootu prepares for transition
+        kyootuMouth.classList.remove('happy-mouth');
+        kyootuMouth.classList.add('surprise-mouth'); // Surprise for cake reveal
+        kyootuBlushes.forEach((blush) => blush.classList.add('active')); // Blush with surprise
+
+        sections[2].style.transform = 'translateY(-100%)';
+        sections[3].style.transform = 'translateY(0)'; // Move to current section
+        sections[3].style.opacity = '1';
+        await new Promise((resolve) => setTimeout(resolve, SCROLL_DURATION_MS + TRANSITION_DELAY_MS));
+
+        // Kyootu positions herself for the cake (responsive position)
+        if (window.innerWidth <= 768) {
+            mainKyootuChar.style.right = '5%';
+            mainKyootuChar.style.left = 'auto';
+            mainKyootuChar.style.bottom = 'auto';
+            mainKyootuChar.style.top = '5%';
+            mainKyootuChar.style.transform = 'translateX(0) scale(0.7)';
+        } else {
+            mainKyootuChar.style.right = '20%';
+            mainKyootuChar.style.left = 'auto';
+            mainKyootuChar.style.bottom = '18%';
+            mainKyootuChar.style.top = 'auto';
+            mainKyootuChar.style.transform = 'translateX(0) scale(1)';
+        }
+        stopKyootuIdleAnimation();
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        // Cake appears with a pop-in animation
+        cakeStand.style.animation = 'cake-pop-in 1s forwards cubic-bezier(0.68, -0.55, 0.265, 1.55)'; // Bouncy reveal
+        await new Promise((resolve) => setTimeout(resolve, 700)); // Allow stand to settle
+
+        cakeWrapper.style.animation = 'cake-pop-in 1s forwards cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        // Cake layers stack up with bounce
+        for (let i = cakeLayers.length - 1; i >= 0; i--) {
+          cakeLayers[i].style.animation = `cake-layer-bounce-in 0.6s forwards cubic-bezier(0.68, -0.55, 0.265, 1.55) ${
+            (cakeLayers.length - 1 - i) * 0.2
+          }s`;
+          await new Promise((resolve) => setTimeout(resolve, 300));
+        }
+
+        // Cake drips animate in
+        cakeDrips.forEach((drip, index) => {
+          drip.style.animation = `drip 0.8s ease-out forwards ${index * 0.05 + 0.5}s`;
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        // Sprinkles fall onto the cake
+        document
+          .querySelectorAll('#section4 .sprinkle')
+          .forEach((sprinkle, index) => {
+            sprinkle.style.animation = `sprinkle-fall ${getRandom(0.8, 1.5)}s ease-out forwards ${
+              index * 0.01
+            }s`;
+          });
+        await new Promise((resolve) => setTimeout(resolve, 1500)); // Allow sprinkles to fall
+
+        // Candles light up with a pop
+        candles.forEach((candle, index) => {
+          candle.style.animation = `candle-light-up 0.5s forwards cubic-bezier(0.68, -0.55, 0.265, 1.55) ${
+            index * 0.1
+          }s`;
+          flames[index].style.animationDelay = `${index * 0.1 + 0.4}s`; // Delay flame appearance slightly
+          flames[index].classList.add('active'); // Turn on flame
+        });
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        // Display "Happy Birthday!" message
+        cakeMainMessage.style.animation = 'cake-message-pop 1.5s forwards cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Let message settle
+
+        // Kyootu prepares to blow candles
+        stopKyootuBlinking();
+        kyootuArms[0].classList.add('blow-pose');
+        kyootuArms[1].classList.add('blow-pose');
+        kyootuMouth.classList.remove('surprise-mouth', 'happy-mouth', 'neutral-mouth');
+        kyootuMouth.classList.add('blow-mouth');
+        kyootuBlushes.forEach((blush) => blush.classList.add('active'));
+        mainKyootuChar.style.transform = `translateX(${window.innerWidth <= 768 ? '-50%' : '0'}) scale(${window.innerWidth <= 768 ? 0.7 : 1}) translateY(-5px)`; // Slight lean forward (responsive)
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        // Position puff effect near Kyootu's mouth relative to the candles
+        const kyootuRect = mainKyootuChar.getBoundingClientRect();
+        const firstCandleRect = candles[0].getBoundingClientRect();
+
+        // Calculate puff effect origin more robustly for responsive layouts
+        const kyootuMouthX = kyootuRect.left + (kyootuRect.width * (window.innerWidth <= 768 ? 0.55 : 0.4)); // Adjust for smaller Kyootu
+        const kyootuMouthY = kyootuRect.top + (kyootuRect.height * (window.innerWidth <= 768 ? 0.35 : 0.4)); // Adjust for smaller Kyootu
+
+        const targetX = (kyootuMouthX + firstCandleRect.left + firstCandleRect.width / 2) / 2;
+        const targetY = (kyootuMouthY + firstCandleRect.top) / 2;
+
+
+        puffEffect.style.left = `${targetX}px`;
+        puffEffect.style.top = `${targetY}px`;
+        puffEffect.style.animation = 'puff-effect 0.8s forwards';
+
+        flames.forEach((flame) => {
+          flame.style.animation = 'flame-extinguish 0.5s forwards'; // Candles extinguish!
+        });
+        await new Promise((resolve) => setTimeout(resolve, 800)); // Wait for puff and extinguish
+
+        // Cake confetti burst
+        section4ConfettiBurst.classList.add('active'); // Trigger cake confetti
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Let confetti fly
+        section4ConfettiBurst.style.opacity = '0'; // Hide burst confetti
+
+        // Kyootu returns to normal pose and smiles excitedly
+        kyootuArms[0].classList.remove('blow-pose');
+        kyootuArms[1].classList.remove('blow-pose');
+        kyootuMouth.classList.remove('blow-mouth');
+        kyootuMouth.classList.add('happy-mouth'); // Explicit happy smile
+        kyootuBlushes.forEach((blush) => blush.classList.remove('active'));
+        mainKyootuChar.style.transform = `translateX(${window.innerWidth <= 768 ? '-50%' : '0'}) scale(${window.innerWidth <= 768 ? 0.7 : 1}) translateY(0)`; // Reset lean (responsive)
+        startKyootuBlinking(); // Resume blinking
+        await new Promise((resolve) => setTimeout(resolve, 1500)); // Kyootu enjoys the moment
+
+        // 5. Phase 5: Transition to Section 5 - The Memory Carousel (ENHANCED)
+        // Kyootu prepares for transition
+        kyootuMouth.classList.remove('happy-mouth');
+        kyootuMouth.classList.add('thoughtful-mouth'); // Thoughtful for memories
+        kyootuBlushes.forEach((blush) => blush.classList.add('active')); // Blush with emotion
+
+        sections[3].style.transform = 'translateY(-100%)';
+        sections[4].style.transform = 'translateY(0)';
+        sections[4].style.opacity = '1';
+        await new Promise((resolve) => setTimeout(resolve, SCROLL_DURATION_MS + TRANSITION_DELAY_MS));
+
+        // Kyootu centers herself for the carousel (responsive position)
+        mainKyootuChar.style.right = 'auto'; // Reset right
+        mainKyootuChar.style.left = '50%';
+        mainKyootuChar.style.bottom = '5%';
+        mainKyootuChar.style.top = 'auto';
+        mainKyootuChar.style.transform = `translateX(-50%) scale(${window.innerWidth <= 768 ? 0.7 : 1})`; // Smaller Kyootu on mobile
+        stopKyootuIdleAnimation();
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        memoryCarousel.style.opacity = '1';
+        memoryCarousel.style.transform = 'translateY(0) scale(1)'; // Simple reveal for the carousel container
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        carouselActive = true; // Activate carousel logic
+        showSlide(currentSlide); // Show the first slide
+        startMemoryCarousel(); // Start slideshow
+
+        // Add event listeners for navigation buttons (only if not on very small screen)
+        if (window.innerWidth > 480) { // Check screen size
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+        }
+
+        // Kyootu watches the memories (happy and thoughtful expressions)
+        kyootuMouth.classList.remove('thoughtful-mouth');
+        kyootuMouth.classList.add('happy-mouth');
+        startKyootuBlinking();
+        await new Promise((resolve) => setTimeout(resolve, MEMORY_SLIDE_INTERVAL * slides.length)); // Let all slides play through once + some extra time
+
+        // 6. Phase 6: Transition to Section 6 - Final Grand Message & Celebration
+        stopMemoryCarousel(); // Stop carousel when moving on
+        carouselActive = false; // Deactivate carousel logic
+        // Remove event listeners (only if they were added)
+        if (window.innerWidth > 480) {
+            prevBtn.removeEventListener('click', prevSlide);
+            nextBtn.removeEventListener('click', nextSlide);
+        }
+
+        kyootuMouth.classList.remove('happy-mouth');
+        kyootuMouth.classList.add('neutral-mouth'); // Neutral before final message
+        kyootuBlushes.forEach((blush) => blush.classList.remove('active')); // Blush fades
+
+        sections[4].style.transform = 'translateY(-100%)';
+        sections[5].style.transform = 'translateY(0)';
+        sections[5].style.opacity = '1';
+        await new Promise((resolve) => setTimeout(resolve, SCROLL_DURATION_MS + TRANSITION_DELAY_MS));
+
+        finalSubMessage.style.opacity = '1';
+        // Kyootu celebratory hop
+        mainKyootuChar.style.animation = 'kyootu-hop 1s ease-out forwards';
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        mainKyootuChar.style.animation = 'kyootu-idle 4s ease-in-out infinite alternate'; // Back to idle
+        kyootuMouth.classList.add('happy-mouth'); // Kyootu is super happy for the end!
+
+        // Final confetti burst
+        createConfetti(section6ConfettiBurst, 150, 0.7, true);
+        section6ConfettiBurst.classList.add('active'); // Trigger final burst
+
+        console.log("Animation sequence complete!");
+      }
+
+      // Helper to stop Kyootu's idle animation
+      function stopKyootuIdleAnimation() {
+        const kyootu = document.getElementById('main-kyootu-char');
+        kyootu.style.animation = 'none'; // Clear animation property
+      }
+
+      // Start the animation when the DOM is fully loaded
+      document.addEventListener('DOMContentLoaded', startAnimationSequence);
+    </script>
+  </body>
+</html>
