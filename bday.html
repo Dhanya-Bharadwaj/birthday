@@ -1085,17 +1085,23 @@
       }
 
 
-      .cake-layer:nth-child(2) {
+      .cake-layer.second-layer {
         width: 250px;
         height: 80px;
         margin-top: -25px;
         z-index: 1;
       }
-      .cake-layer:nth-child(3) {
+      .cake-layer.third-layer {
         width: 200px;
         height: 70px;
         margin-top: -25px;
         z-index: 2;
+      }
+      .cake-layer.first-layer {
+        /* Largest bottom layer: ensure it sits behind the others */
+        width: 300px;
+        height: 90px;
+        z-index: 0;
       }
 
       /* Cake drips */
@@ -2010,12 +2016,12 @@
           width: 240px;
           height: 70px;
         }
-        .cake-layer:nth-child(2) {
+        .cake-layer.second-layer {
           width: 190px;
           height: 60px;
           margin-top: -20px;
         }
-        .cake-layer:nth-child(3) {
+        .cake-layer.third-layer {
           width: 150px;
           height: 50px;
           margin-top: -20px;
@@ -2155,12 +2161,12 @@
           width: 200px;
           height: 60px;
         }
-        .cake-layer:nth-child(2) {
+        .cake-layer.second-layer {
           width: 160px;
           height: 50px;
           margin-top: -18px;
         }
-        .cake-layer:nth-child(3) {
+        .cake-layer.third-layer {
           width: 120px;
           height: 40px;
           margin-top: -18px;
@@ -2325,7 +2331,7 @@
         <div class="section-header" aria-hidden="false">
           <h1 class="party-banner">Happy Birthday!</h1>
           <p class="welcome-message">
-            A magical surprise awaits you, dear Kyootu!
+            A magical surprise awaits you, Kyootu!
           </p>
         </div>
       </section>
@@ -2376,7 +2382,6 @@
             <div class="candle"><div class="flame"></div></div>
             <div class="candle"><div class="flame"></div></div>
           </div>
-          <div class="cake-layer first-layer"></div>
           <div class="cake-layer second-layer">
             <!-- Increased drips, alternating colors -->
             <div class="cake-drip" style="left: 5%;"></div>
@@ -2390,20 +2395,7 @@
             <div class="cake-drip" style="left: 85%;"></div>
             <div class="cake-drip white" style="left: 95%;"></div>
           </div>
-          <div class="cake-layer third-layer">
-            <!-- Increased drips, alternating colors -->
-            <div class="cake-drip" style="left: 0%;"></div>
-            <div class="cake-drip white" style="left: 10%;"></div>
-            <div class="cake-drip" style="left: 20%;"></div>
-            <div class="cake-drip white" style="left: 30%;"></div>
-            <div class="cake-drip" style="left: 40%;"></div>
-            <div class="cake-drip white" style="left: 50%;"></div>
-            <div class="cake-drip" style="left: 60%;"></div>
-            <div class="cake-drip white" style="left: 70%;"></div>
-            <div class="cake-drip" style="left: 80%;"></div>
-            <div class="cake-drip white" style="left: 90%;"></div>
-            <div class="cake-drip" style="left: 100%;"></div>
-          </div>
+          <div class="cake-layer first-layer"></div>
         </div>
 
         <h2 class="cake-message" id="cake-main-message"></h2>
@@ -2424,7 +2416,7 @@
               <!-- Removed text directly on slide, now only in memory-slide-content -->
               <img
                 src="https://images.unsplash.com/photo-1542838118-2081d68a2ce8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=170&h=170&q=80"
-                alt="Memory Image 1"
+                alt=""
               />
               <div class="memory-slide-content">
                 "To many more adventures together, Kyootu!"
@@ -2433,7 +2425,7 @@
             <div class="memory-slide">
               <img
                 src="https://images.unsplash.com/photo-1582046429391-72a39f01e16f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=170&h=170&q=80"
-                alt="Memory Image 2"
+                alt=""
               />
               <div class="memory-slide-content">
                 "May your day be filled with joy and laughter!"
@@ -2442,7 +2434,7 @@
             <div class="memory-slide">
               <img
                 src="https://images.unsplash.com/photo-1522851214088-7e231575c32c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=170&h=170&q=80"
-                alt="Memory Image 3"
+                alt=""
               />
               <div class="memory-slide-content">
                 "Wishing you all your heart's desires!"
@@ -2451,7 +2443,7 @@
             <div class="memory-slide">
               <img
                 src="https://images.unsplash.com/photo-1582236371520-252a1d2e8e0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=170&h=170&q=80"
-                alt="Memory Image 4"
+                alt=""
               />
               <div class="memory-slide-content">
                 "So glad to celebrate with you!"
