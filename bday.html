@@ -166,6 +166,32 @@
         z-index: 6;
       }
 
+      /* Header wrapper for section1 to avoid overlapping absolute elements */
+      #section1 .section-header {
+        position: absolute;
+        top: 18%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6em;
+        z-index: 20;
+        text-align: center;
+        pointer-events: none; /* allow clicks to pass through decorative header */
+      }
+
+      /* Ensure banner and welcome message inside section-header are laid out statically
+         so they won't overlap one another due to absolute positioning rules elsewhere. */
+      #section1 .section-header .party-banner,
+      #section1 .section-header .welcome-message {
+        position: static !important;
+        top: auto !important;
+        transform: none !important;
+        opacity: 1; /* animation may set opacity later */
+        pointer-events: auto; /* allow interactions if needed */
+      }
+
       /* NEW: Floating Orb for Section 1 */
       .floating-orb {
         position: absolute;
@@ -245,7 +271,7 @@
         background: linear-gradient(
             to top right,
             var(--primary-pink),
-            var(--deep-purple),
+            var(--lavender),
             var(--sky-blue)
           ),
           url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><radialGradient id="grad3" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"><stop offset="0%" style="stop-color:rgb(255,255,255,0.2)" /><stop offset="100%" style="stop-color:rgb(255,255,255,0)" /></radialGradient></defs><rect width="100%" height="100%" fill="url(%23grad3)" /></svg>')
@@ -1898,13 +1924,12 @@
         }
 
         /* Section 1 */
+        #section1 .section-header { top: 12%; }
         .party-banner {
           font-size: 4em;
-          top: 10%;
         }
         .welcome-message {
           font-size: 1.5em;
-          top: 25%;
         }
         .hanging-balloon-group {
           width: 80px; /* Smaller balloons */
@@ -2052,6 +2077,7 @@
         }
 
         /* Section 1 */
+        #section1 .section-header { top: 10%; }
         .party-banner {
           font-size: 3em;
         }
@@ -2296,10 +2322,12 @@
         <div class="confetti-container" id="section1-confetti-continuous"></div>
         <!-- Floating Orbs (dynamically created by JS) -->
 
-        <h1 class="party-banner">Happy Birthday!</h1>
-        <p class="welcome-message">
-          A magical surprise awaits you, dear Kyootu!
-        </p>
+        <div class="section-header" aria-hidden="false">
+          <h1 class="party-banner">Happy Birthday!</h1>
+          <p class="welcome-message">
+            A magical surprise awaits you, dear Kyootu!
+          </p>
+        </div>
       </section>
 
       <!-- SECTION 2: THE GIFT GARDEN -->
