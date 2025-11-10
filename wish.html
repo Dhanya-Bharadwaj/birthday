@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Make a Wish — Video</title>
+    <style>
+      :root {
+        --bg: #fdeef6;
+        --text: #333;
+        --accent: #ff69b4;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #fff0f6 0%, #fdeef6 100%);
+        font-family: 'Poppins', sans-serif;
+        color: var(--text);
+      }
+      .page {
+        width: 95%;
+        max-width: 1000px;
+        margin: 40px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+      .video-wrap {
+        width: 100%;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        position: relative;
+      }
+      video {
+        width: 100%;
+        height: auto;
+        display: block;
+        background: black;
+      }
+      .controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .btn {
+        padding: 10px 14px;
+        background: var(--accent);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn.secondary {
+        background: rgba(0,0,0,0.08);
+        color: var(--text);
+      }
+      .caption {
+        font-size: 1.05rem;
+        text-align: center;
+        color: #4a4a4a;
+      }
+      @media (max-width:600px) {
+        .page { margin: 20px 12px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1 style="font-family: 'Dancing Script', cursive; font-size: 2.8rem; margin:0; color:var(--accent);">Your Wish Video</h1>
+      <p class="caption">If you uploaded a video named <code>wish_video.mp4</code> into the project folder, it will play below. Otherwise update the source or upload the file.</p>
+
+      <div class="video-wrap">
+        <video id="wishPageVideo" playsinline webkit-playsinline preload="metadata" controls>
+          <source src="wish_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="controls">
+        <button id="backBtn" class="btn secondary">◀ Back to Main</button>
+        <button id="playUnmute" class="btn">Play / Unmute</button>
+      </div>
+
+      <small style="color:#777">Tip: Many browsers block autoplay with sound. Clicking "Play / Unmute" will start playback with audio.</small>
+    </div>
+
+    <script>
+      (function(){
+        const video = document.getElementById('wishPageVideo');
+        const back = document.getElementById('backBtn');
+        const playUnmute = document.getElementById('playUnmute');
+
+        // Attempt autoplay muted if ?autoplay=1 is present
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('autoplay') === '1') {
+          // Try to autoplay muted (more likely to succeed)
+          video.muted = true;
+          const p = video.play();
+          if (p && p.catch) p.catch(()=>{ /* ignore autoplay failure */ });
+        }
+
+        back.addEventListener('click', function(){
+          window.location.href = 'bday.html';
+        });
+
+        playUnmute.addEventListener('click', function(){
+          try {
+            video.muted = false;
+            video.play();
+          } catch (e) {
+            // ignore
+          }
+        });
+
+        // If video fails to load, show a console hint
+        video.addEventListener('error', function(){
+          console.warn('Video failed to load. Make sure wish_video.mp4 exists next to wish.html');
+        });
+      })();
+    </script>
+  </body>
+</html>
